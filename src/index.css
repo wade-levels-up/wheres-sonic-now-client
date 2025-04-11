@@ -8,3 +8,17 @@
   padding: 0;
   list-style: none;
 }
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: aliceblue;
+}
+
+main {
+  justify-content: center;
+  overflow: scroll;
+}
