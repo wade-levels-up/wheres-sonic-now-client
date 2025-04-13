@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const StyledImgArea = styled.img`
+  min-width: 1000px;
+  max-width: 1500px;
+  flex-shrink: 0;
+  height: auto;
+  cursor: crosshair;
+`
 
 const ImageArea = () => {
   const imageUrl = "src/assets/ice-cap-zone.webp";
@@ -38,11 +47,10 @@ const ImageArea = () => {
     }
   };
 
-  return <img
+  return <StyledImgArea
         src={imageUrl}
         alt=""
         onClick={handleImageClick}
-        style={{ maxWidth: "100%", height: "auto", cursor: "crosshair" }}
       />
 };
 

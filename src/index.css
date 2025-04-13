@@ -19,6 +19,15 @@
 }
 
 main {
-  justify-content: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
   overflow: scroll;
+  width: 100%;
+}
+
+@media (min-width: 1500px) {
+  main {
+    justify-content: center;
+  }
 }
