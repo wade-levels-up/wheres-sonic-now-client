@@ -1,6 +1,7 @@
 import React from "react";
 import ImageArea from "./components/ImageArea";
 import CharacterList from "./components/CharacterList";
+import Timer from "./components/Timer";
 
 function App() {
   return (
@@ -8,7 +9,10 @@ function App() {
       <header>
         <h1>Where's Sonic Now</h1>
         <p>Can you find Sonic and his friends?</p>
-        <CharacterList />
+        <div style={{display: "flex"}}>
+          <CharacterList />
+          <Timer />
+        </div>
       </header>
       <main>
         <ImageArea />
