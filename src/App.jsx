@@ -1,14 +1,12 @@
-import React from "react";
+import React, { createContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import ImageArea from "./components/ImageArea";
-import CharacterList from "./components/CharacterList";
-import Timer from "./components/Timer";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />
+    element: <HomePage />,
   },
   {
     path: "/ice-cap-zone",
@@ -16,8 +14,36 @@ const router = createBrowserRouter([
   },
 ])
 
+//SFX
+
+const sfxLevelSelect = new Audio("/src/assets/sfx-level-select.mp3")
+const sfxOptionSelect = new Audio("/src/assets/sfx-option-select.mp3")
+
+
+//////
+
+export const GlobalContext = createContext({
+  playSFX: () => {}
+})
+
+function playSFX(sfxName) {
+  if (sfxName === "Level Select") {
+    sfxLevelSelect.play()
+    sfxLevelSelect.currentTime = 0;
+  }
+
+  if (sfxName === "Option Select") {
+    sfxOptionSelect.play()
+    sfxOptionSelect.currentTime = 0;
+  }
+}
+
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <GlobalContext.Provider value={{ playSFX }}>
+      <RouterProvider router={router}/>
+    </GlobalContext.Provider>
+  )
 }
 
 export default App

@@ -1,10 +1,17 @@
 @font-face {
-  font-family: 'sageregular';
-  src: url('/src/assets/sage-webfont.woff') format('woff'),
-       url('/src/assets/sage-webfont.woff2') format('woff2');
+  font-family: 'sage';
+  src: url('/src/assets/sage-webfont.woff2') format('woff2'),
+       url('/src/assets/sage-webfont.woff') format('woff');
   font-weight: bold;
   font-style: bold;
+}
 
+@font-face {
+  font-family: 'andes';
+  src: url('/src/assets/andes-webfont.woff2') format('woff2'),
+       url('/src/assets/andes-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root {
