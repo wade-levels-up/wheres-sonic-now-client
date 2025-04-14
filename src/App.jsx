@@ -1,25 +1,23 @@
 import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./components/HomePage";
 import ImageArea from "./components/ImageArea";
 import CharacterList from "./components/CharacterList";
 import Timer from "./components/Timer";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />
+  },
+  {
+    path: "/ice-cap-zone",
+    element: <ImageArea />
+  },
+])
+
 function App() {
-  return (
-    <>
-      <header>
-        <h1>Where's Sonic Now</h1>
-        <p>Can you find Sonic and his friends?</p>
-        <div style={{display: "flex"}}>
-          <CharacterList />
-          <Timer />
-        </div>
-      </header>
-      <main>
-        <ImageArea />
-      </main>
-      <footer>Created by Wade</footer>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

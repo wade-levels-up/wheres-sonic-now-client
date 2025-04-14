@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'sageregular';
+  src: url('/src/assets/sage-webfont.woff') format('woff'),
+       url('/src/assets/sage-webfont.woff2') format('woff2');
+  font-weight: bold;
+  font-style: bold;
+
+}
+
 :root {
   font-size: 16px;
 }
@@ -18,7 +27,7 @@
   color: aliceblue;
 }
 
-main {
+.gameboard {
   display: flex;
   flex: 1;
   justify-content: flex-start;
@@ -27,7 +36,7 @@ main {
 }
 
 @media (min-width: 1500px) {
-  main {
+  .gameboard {
     justify-content: center;
   }
 }
