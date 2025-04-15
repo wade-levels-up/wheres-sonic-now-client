@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledAudio = styled.audio`
     border: 6px ridge gold;
     border-radius: 50px;
-    margin: 3px;
+    margin: 16px 0px;
 `
 
 const MusicPlayer = ({ source }) => {

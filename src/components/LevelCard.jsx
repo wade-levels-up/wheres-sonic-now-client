@@ -30,6 +30,7 @@ const StyledH2 = styled.h2`
     font-size: 24px;
     padding: 6px;
     color: aliceblue;
+    letter-spacing: 3px;
 `
 
 const LevelCard = ({ title, href, src, alt }) => {
@@ -45,6 +46,7 @@ const LevelCard = ({ title, href, src, alt }) => {
         <StyledLevelCard onClick={handleSelect} onMouseEnter={() => playSFX("Option Select")}>
             <img src={src} alt={alt} />
             <StyledH2>{title}</StyledH2>
+            <span style={{width: "100%", textAlign: "left", padding: "6px", backgroundColor: "brown"}}>Best time:</span>
         </StyledLevelCard>
     )
 }

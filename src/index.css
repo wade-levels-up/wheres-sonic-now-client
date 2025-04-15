@@ -59,6 +59,7 @@
   flex-direction: column;
   background-color: black;
   color: aliceblue;
+  line-height: 1.5;
 
   animation-name: fly-in;
   animation-iteration-count: 1;
