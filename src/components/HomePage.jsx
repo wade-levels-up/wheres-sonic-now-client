@@ -9,9 +9,13 @@ const StyledMain = styled.main`
     flex-direction: column;
     gap: 12px;
     flex: 1;
-    background: center / cover no-repeat url("/src/assets/sonic-tails-backdrop.webp");
+    background: center / contain repeat-x url("/src/assets/background-title.gif");
     justify-content: center;
     align-items: center;
+
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 
     p {
         font-size: 1.8rem;

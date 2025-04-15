@@ -10,16 +10,15 @@ const StyledButton = styled.button`
     font-family: 'system-ui', 'arial';
     font-weight: 350;
     padding: 3px 8px;
-    color: dodgerblue;
-    background-color: black;
-    border: 2px ridge grey;
+    color: aliceblue;
+    background-color: red;
+    border: 2px outset gray;
     border-radius: 30px;
+    box-shadow: 1px 3px 3px white inset;
     cursor: pointer;
 
     &:hover {
-        color: black;
-        background-color: dodgerblue;
-        border: 2px solid gold;
+        box-shadow: 3px 6px 3px black inset;
     }
 `
 

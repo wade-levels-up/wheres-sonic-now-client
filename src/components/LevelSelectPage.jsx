@@ -7,15 +7,18 @@ import Button from "./Button";
 
 const StyledMain = styled.main`
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
-    background: center / cover no-repeat url("/src/assets/sonic-tails-backdrop.webp");
+    background: center / contain repeat-x url("/src/assets/background-title.gif");
 `
 const StyledGrid = styled.div`
     display: grid;
     width: 100%;
+    max-width: 1200px;
     padding: 16px;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-template-rows: 320px;
+    grid-template-rows: 350px;
     gap: 16px;
 `
 
