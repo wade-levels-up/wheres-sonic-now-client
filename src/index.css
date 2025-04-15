@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+
 @font-face {
   font-family: 'sage';
   src: url('/src/assets/sage-webfont.woff2') format('woff2'),
@@ -40,6 +42,7 @@
 :root {
   font-size: 16px;
   background-color: black;
+  font-family: 'Arial', sans-serif, system-ui;
 }
 
 * {

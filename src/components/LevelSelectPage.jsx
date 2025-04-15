@@ -3,6 +3,7 @@ import Header from "./Header";
 import MusicPlayer from "./MusicPlayer";
 import Footer from "./Footer";
 import LevelCard from "./LevelCard";
+import Button from "./Button";
 
 const StyledMain = styled.main`
     display: flex;
@@ -22,12 +23,14 @@ const LevelSelectPage = () => {
     return (
         <>
             <Header title="Level Select"/>
-            <nav style={{display: "flex", justifyContent: "space-between", padding: "8px", flexWrap: "wrap"}}>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/credits">Credit</a>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", flexWrap: "wrap"}}>
+                <nav style={{display: "flex", gap: "16px"}}>
+                    <Button text="Home" href={"/"}/>
+                    <Button text="About" href={"/about"}/>
+                    <Button text="Credits" href={"/credits"}/>
+                </nav>
                 <MusicPlayer source={"/src/assets/data-select.mp3"}/>
-            </nav>
+            </div>
             <StyledMain>
                 <StyledGrid>
                     <LevelCard title={"Angel Island Zone"} href={"/angel-island-zone"} src={"/src/assets/thumb-angelisland.png"} alt={"Angel Island Zone"}/>
