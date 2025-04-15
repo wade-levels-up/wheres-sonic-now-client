@@ -14,8 +14,12 @@ const router = createBrowserRouter([
     element: <LevelSelectPage />,
   },
   {
+    path: "/angel-island-zone",
+    element: <Level imageUrl={"src/assets/ice-cap-zone.webp"}/>
+  },
+  {
     path: "/ice-cap-zone",
-    element: <Level />
+    element: <Level imageUrl={"src/assets/ice-cap-zone.webp"}/>
   },
 ])
 

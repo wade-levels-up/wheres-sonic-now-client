@@ -24,11 +24,16 @@
 }
 
 @keyframes fly-in {
-  from {
-    transform: translateX(-200vw)
+  0% {
+    transform: translateY(200vh)
   }
-  to {
-    transform: translateX(0)
+
+  60% {
+    transform: translateY(-5vh)
+  }
+
+  100% {
+    transform: translateY(0)
   }
 }
 
@@ -55,6 +60,7 @@
   animation-name: fly-in;
   animation-iteration-count: 1;
   animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   animation-fill-mode: forwards;
 }
 

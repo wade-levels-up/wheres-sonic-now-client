@@ -9,8 +9,7 @@ const StyledImgArea = styled.img`
   cursor: crosshair;
 `
 
-const Level = () => {
-  const imageUrl = "src/assets/ice-cap-zone.webp";
+const Level = ({ imageUrl }) => {
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {

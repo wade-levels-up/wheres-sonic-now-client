@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Header from "./Header";
+import Footer from "./Footer";
 import MusicPlayer from "./MusicPlayer";
 
 const StyledMain = styled.main`
@@ -23,9 +24,7 @@ const HomePage = () => {
             <StyledMain>
                 <p>Welcome to Where's Sonic Now? An interactive 'Where's Wally' style web game based on the 'Where's Sonic Now' book by Ladybird in the UK</p>
             </StyledMain>
-            <footer>
-                <span>Made by Wade</span>
-            </footer>
+            <Footer />
         </>
     )
 }
