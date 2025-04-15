@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { GlobalContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
-const StyledLevelSelect = styled.div`
+const StyledLevelCard = styled.div`
     display: flex;
     flex-direction: column;
-    width: 336px;
+    max-width: 336px;
     height: fit-content;
     border: 6px gold ridge;
     text-decoration: none;
@@ -32,7 +32,7 @@ const StyledH2 = styled.h2`
     color: aliceblue;
 `
 
-const LevelSelect = ({ title, href, src, alt }) => {
+const LevelCard = ({ title, href, src, alt }) => {
     const { playSFX } = useContext(GlobalContext);
     const navigate = useNavigate()
 
@@ -42,11 +42,11 @@ const LevelSelect = ({ title, href, src, alt }) => {
     }
 
     return (
-        <StyledLevelSelect onClick={handleSelect} onMouseEnter={() => playSFX("Option Select")}>
+        <StyledLevelCard onClick={handleSelect} onMouseEnter={() => playSFX("Option Select")}>
             <img src={src} alt={alt} />
-        <StyledH2>{title}</StyledH2>
-        </StyledLevelSelect>
+            <StyledH2>{title}</StyledH2>
+        </StyledLevelCard>
     )
 }
 
-export default LevelSelect;
+export default LevelCard;

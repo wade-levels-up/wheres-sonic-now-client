@@ -9,7 +9,7 @@ const StyledImgArea = styled.img`
   cursor: crosshair;
 `
 
-const ImageArea = () => {
+const Level = () => {
   const imageUrl = "src/assets/ice-cap-zone.webp";
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
 
@@ -54,4 +54,4 @@ const ImageArea = () => {
       />
 };
 
-export default ImageArea;
+export default Level;

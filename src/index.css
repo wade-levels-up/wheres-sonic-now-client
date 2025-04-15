@@ -14,8 +14,27 @@
   font-style: normal;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+@keyframes fly-in {
+  from {
+    transform: translateX(-200vw)
+  }
+  to {
+    transform: translateX(0)
+  }
+}
+
 :root {
   font-size: 16px;
+  background-color: black;
 }
 
 * {
@@ -32,6 +51,11 @@
   flex-direction: column;
   background-color: black;
   color: aliceblue;
+
+  animation-name: fly-in;
+  animation-iteration-count: 1;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
 }
 
 .gameboard {

@@ -1,16 +1,21 @@
 import React, { createContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LevelSelectPage from "./components/LevelSelectPage";
 import HomePage from "./components/HomePage";
-import ImageArea from "./components/ImageArea";
+import Level from "./components/Level";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <HomePage />
+  },
+  {
+    path: "/level-select",
+    element: <LevelSelectPage />,
   },
   {
     path: "/ice-cap-zone",
-    element: <ImageArea />
+    element: <Level />
   },
 ])
 
