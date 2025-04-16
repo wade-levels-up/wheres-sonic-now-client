@@ -8,7 +8,7 @@ const StyledAudio = styled.audio`
 
 const MusicPlayer = ({ source }) => {
     return (
-        <StyledAudio id="audioPlayer" controls autoPlay="true">
+        <StyledAudio id="audioPlayer" controls autoPlay={true}>
             <source src={source} type="audio/mpeg" />
             Your browser does not support the audio element
         </StyledAudio>

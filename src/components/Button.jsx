@@ -22,7 +22,7 @@ const StyledButton = styled.button`
     }
 `
 
-const Button = ({ text = "button", func, href }) => {
+const Button = ({ text = "button", type, func, href }) => {
     const { playSFX } = useContext(GlobalContext);
     const navigate = useNavigate()
 
@@ -34,7 +34,7 @@ const Button = ({ text = "button", func, href }) => {
     if (href) {
         return <StyledButton onClick={handleNavigate}>{text}</StyledButton>
     } else {
-        return <StyledButton onClick={() => func()}>{text}</StyledButton>
+        return <StyledButton type={type} onClick={() => func()}>{text}</StyledButton>
     }
 }
 

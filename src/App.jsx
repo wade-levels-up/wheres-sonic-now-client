@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LevelSelectPage from "./components/LevelSelectPage";
 import HomePage from "./components/HomePage";
-import Level from "./components/Level";
+import LevelPage from "./components/LevelPage";
 
 const router = createBrowserRouter([
   {
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/angel-island-zone",
-    element: <Level imageUrl={"src/assets/ice-cap-zone.webp"}/>
+    element: <LevelPage name={"Angel Island Zone"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
   },
   {
     path: "/ice-cap-zone",
-    element: <Level imageUrl={"src/assets/ice-cap-zone.webp"}/>
+    element: <LevelPage name={"Ice Cap Zone"} musicPath={"/src/assets/icecapzone.mp3"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
   },
 ])
 
