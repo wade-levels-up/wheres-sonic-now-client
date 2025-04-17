@@ -15,11 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/angel-island-zone",
-    element: <LevelPage name={"Angel Island Zone"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
+    element: <LevelPage name={"angel-island-zone"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
   },
   {
     path: "/ice-cap-zone",
-    element: <LevelPage name={"Ice Cap Zone"} musicPath={"/src/assets/icecapzone.mp3"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
+    element: <LevelPage name={"ice-cap-zone"} musicPath={"/src/assets/icecapzone.mp3"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
   },
 ])
 

@@ -72,10 +72,12 @@ const HitBox = styled.div`
 `
 
 
-const LevelPage = ({ imageUrl, musicPath }) => {
+const LevelPage = ({ name, imageUrl, musicPath }) => {
+  const [itemSelection, setItemSelection] = useState("sonic");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState("none");
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
+  const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0}); 
 
   useEffect(() => {
     const image = new Image();
@@ -97,25 +99,42 @@ const LevelPage = ({ imageUrl, musicPath }) => {
     const normalizedX = (x / rect.width) * originalImageSize.width;
     const normalizedY = (y / rect.height) * originalImageSize.height;
 
-    console.log(normalizedX, normalizedY );
+    console.log(normalizedX, normalizedY);
+    setPixelPosition({ x: normalizedX, y: normalizedY});
     setClickedPosition({ x: e.clientX - 30, y: e.clientY - 25})
-
-    // if ((normalizedX > 39 && normalizedX < 123) &&(normalizedY > 520 && normalizedY < 600)) {
-    //   alert("You found Knuckles!")
-    // }
-
-    // if ((normalizedX > 898 && normalizedX < 1002) &&(normalizedY > 1370 && normalizedY < 1467)) {
-    //   alert("You found Tails!")
-    // }
-
-    // if ((normalizedX > 2439 && normalizedX < 2537) &&(normalizedY > 872 && normalizedY < 975)) {
-    //   alert("You found Sonic!")
-    // }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setDisplayHitBox("none");
+
+    console.log(itemSelection, name, clickPosition.x, clickPosition.y)
+
+    const response = await fetch(
+      `http://localhost:3030/levels`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ name: itemSelection, levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
+      }
+    )
+
+    if (response.ok) {
+      const data = await response.json()
+      if (data.isFound) {
+        alert(`You found ${itemSelection}!`);
+      }
+    } else {
+      const errorData = await response.json();
+      console.error(`${errorData.message}`);
+    }
+  }
 
   return (
     <>
-      <Header title="Where's Sonic Now?"/>
+      <Header title={name}/>
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", flexWrap: "wrap"}}>
                 <nav style={{display: "flex", gap: "16px"}}>
                     <Button text="Home" href={"/"}/>
@@ -128,13 +147,19 @@ const LevelPage = ({ imageUrl, musicPath }) => {
               <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
               <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
                 <span>Who is this?</span>
-                <form action="">
+                <form onSubmit={handleSubmit} action="">
                   <label htmlFor="item"></label>
-                  <select name="item" id="item">
+                  <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
                     <option value="sonic">Sonic</option>
                     <option value="tails">Tails</option>
                     <option value="knuckles">Knuckles</option>
                   </select>
+                  <label hidden htmlFor="x">
+                    <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
+                  </label>
+                  <label hidden htmlFor="y">
+                    <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
+                  </label>
                   <button type="submit">Submit</button>
                 </form>
               </HitBox>
