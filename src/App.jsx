@@ -27,7 +27,8 @@ const router = createBrowserRouter([
 
 const sfxLevelSelect = new Audio("/src/assets/sfx-level-select.mp3")
 const sfxOptionSelect = new Audio("/src/assets/sfx-option-select.mp3")
-
+const sfxWrong = new Audio("/src/assets/sfx-wrong.mp3")
+const sfxCorrect = new Audio("/src/assets/sfx-correct.mp3")
 
 //////
 
@@ -44,6 +45,16 @@ function playSFX(sfxName) {
   if (sfxName === "Option Select") {
     sfxOptionSelect.play()
     sfxOptionSelect.currentTime = 0;
+  }
+
+  if (sfxName === "wrong") {
+    sfxWrong.play()
+    sfxWrong.currentTime = 0;
+  }
+
+  if (sfxName === "correct") {
+    sfxCorrect.play()
+    sfxCorrect.currentTime = 0;
   }
 }
 

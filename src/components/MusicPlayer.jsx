@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 const StyledAudio = styled.audio`
@@ -6,13 +7,13 @@ const StyledAudio = styled.audio`
     margin: 16px 0px;
 `
 
-const MusicPlayer = ({ source }) => {
+const MusicPlayer = forwardRef(({ source, autoPlay }, ref) => {
     return (
-        <StyledAudio id="audioPlayer" controls autoPlay={true}>
+        <StyledAudio ref={ref} id="audioPlayer" controls controlsList="nodownload" autoPlay={autoPlay}>
             <source src={source} type="audio/mpeg" />
             Your browser does not support the audio element
         </StyledAudio>
     )
-}
+})
 
 export default MusicPlayer;

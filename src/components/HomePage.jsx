@@ -17,8 +17,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
-    p {
-        font-size: 1.8rem;
+    p, h2 {
+        font-size: 2rem;
         font-weight: 900;
         width: fit-content;
         max-width: 80%;
@@ -35,20 +35,18 @@ const HomePage = () => {
 
     return (
         <>
-            <Header title="Where's Sonic Now?"/>
+            <Header title="Find Sonic Fast"/>
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", flexWrap: "wrap"}}>
                 <nav style={{display: "flex", gap: "16px"}}>
                     <Button text="Play" href={"/level-select"}/>
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/title-screen.mp3"}/>
+                <MusicPlayer source={"/src/assets/title-screen.mp3"} autoPlay={'true'}/>
             </div>
             <StyledMain>
-                <p>Hi!</p>
-                <p>Welcome to Where's Sonic Now</p>
-                <p style={{fontSize: "16px"}}>( Based on the Where's Sonic Now? book published in 1996 by Ladybird in the UK )</p>
-                <p>Have fun ✌🏻</p>
+                <h2 style={{animation: "2s ease 1 fly-in"}}>Welcome to Find Sonic Fast</h2>
+                <h2 style={{animation: "3s ease 1 fly-in"}}>Have fun!</h2>
             </StyledMain>
             <Footer />
         </>

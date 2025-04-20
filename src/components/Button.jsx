@@ -22,7 +22,7 @@ const StyledButton = styled.button`
     }
 `
 
-const Button = ({ text = "button", type, func, href }) => {
+const Button = ({ text = "button", type = "button", func, href, style }) => {
     const { playSFX } = useContext(GlobalContext);
     const navigate = useNavigate()
 
@@ -32,9 +32,9 @@ const Button = ({ text = "button", type, func, href }) => {
     }
 
     if (href) {
-        return <StyledButton onClick={handleNavigate}>{text}</StyledButton>
+        return <StyledButton onMouseEnter={() => playSFX("Option Select")} onClick={handleNavigate} style={style}>{text}</StyledButton>
     } else {
-        return <StyledButton type={type} onClick={() => func()}>{text}</StyledButton>
+        return <StyledButton onMouseEnter={() => playSFX("Option Select")} type={type} onClick={func} style={style}>{text}</StyledButton>
     }
 }
 

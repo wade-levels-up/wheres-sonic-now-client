@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { GlobalContext } from "../App";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./Button";
 import MusicPlayer from "./MusicPlayer";
+import GameScore from "./GameScore";
 import styled from "styled-components";
 
 const StyledImgArea = styled.img`
@@ -78,13 +80,32 @@ const HitBox = styled.div`
     }
 `
 
+const StyledModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+
+  h2 {
+    font-size: 2rem;
+    animation: 1s ease 1 fly-in;
+  }
+`
 
 const LevelPage = ({ name, imageUrl, musicPath }) => {
-  const [itemSelection, setItemSelection] = useState("sonic");
+  const [gameStarted, setGameStarted] = useState(false);
+  const musicRef = useRef(null); 
+  const [itemSelection, setItemSelection] = useState("Sonic");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState("none");
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
   const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0}); 
+
+  const { playSFX } = useContext(GlobalContext);
 
   useEffect(() => {
     const image = new Image();
@@ -95,6 +116,10 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       setOriginalImageSize({ width: image.width, height: image.height });
     };
   }, [imageUrl]);
+
+  const startGame = () => {
+    setGameStarted(true)
+  }
 
   const handleImageClick = (e) => {
     setDisplayHitBox("flex");
@@ -124,20 +149,30 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ name: itemSelection, levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
+        body: JSON.stringify({ name: itemSelection.toLowerCase(), levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
       }
     )
 
     if (response.ok) {
       const data = await response.json()
       if (data.isFound) {
+        playSFX("correct");
         alert(`You found ${itemSelection}!`);
+      } else {
+        playSFX("wrong");
+        alert(`That's not ${itemSelection}!`)
       }
     } else {
       const errorData = await response.json();
       console.error(`${errorData.message}`);
     }
   }
+
+  useEffect(() => {
+    if (gameStarted && musicRef.current) {
+      musicRef.current.play(); 
+    }
+  }, [gameStarted]);
 
   return (
     <>
@@ -148,30 +183,38 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={musicPath}/>
+                {gameStarted ? (<GameScore />) : <></>}
+                <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
             </div>
             <StyledMain>
-              <StyledImgContainer>
-                <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-                <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                  <span>Who is this?</span>
-                  <form onSubmit={handleSubmit} action="">
-                    <label htmlFor="item"></label>
-                    <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
-                      <option value="sonic">Sonic</option>
-                      <option value="tails">Tails</option>
-                      <option value="knuckles">Knuckles</option>
-                    </select>
-                    <label hidden htmlFor="x">
-                      <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
-                    </label>
-                    <label hidden htmlFor="y">
-                      <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
-                    </label>
-                    <button type="submit">Submit</button>
-                  </form>
-                </HitBox>
-              </StyledImgContainer>
+              {gameStarted ? (
+                  <StyledImgContainer>
+                  <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+                  <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                    <span>Who is this?</span>
+                    <form onSubmit={handleSubmit} action="">
+                      <label htmlFor="item"></label>
+                      <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
+                        <option value="Sonic">Sonic</option>
+                        <option value="Tails">Tails</option>
+                        <option value="Knuckles">Knuckles</option>
+                      </select>
+                      <label hidden htmlFor="x">
+                        <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
+                      </label>
+                      <label hidden htmlFor="y">
+                        <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
+                      </label>
+                      <button type="submit">Submit</button>
+                    </form>
+                  </HitBox>
+                </StyledImgContainer>
+              ) : (
+                <StyledModal>
+                    <h2>Ready?</h2>
+                    <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
+                </StyledModal>
+              )}
             </StyledMain>
       <Footer />
     </>

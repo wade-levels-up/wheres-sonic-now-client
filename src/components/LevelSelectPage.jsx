@@ -36,7 +36,7 @@ const LevelSelectPage = () => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/data-select.mp3"}/>
+                <MusicPlayer source={"/src/assets/data-select.mp3"} autoPlay={'true'}/>
             </div>
             <StyledMain>
                 <StyledGrid>
