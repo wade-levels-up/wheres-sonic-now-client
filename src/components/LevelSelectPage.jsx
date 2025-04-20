@@ -11,6 +11,10 @@ const StyledMain = styled.main`
     align-items: center;
     flex: 1;
     background: center / contain repeat-x url("/src/assets/background-title.gif");
+
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 `
 const StyledGrid = styled.div`
     display: grid;

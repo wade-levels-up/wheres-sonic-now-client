@@ -14,6 +14,13 @@ const StyledImgArea = styled.img`
   position: relative;
 `
 
+const StyledImgContainer = styled.div`
+  position: relative; 
+  display: flex;
+  overflow: scroll;
+  max-width: 100vw;
+`;
+
 const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
@@ -101,7 +108,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
     console.log(normalizedX, normalizedY);
     setPixelPosition({ x: normalizedX, y: normalizedY});
-    setClickedPosition({ x: e.clientX - 30, y: e.clientY - 25})
+    setClickedPosition({ x: x - 25, y: y - 25})
   };
 
   const handleSubmit = async (e) => {
@@ -144,25 +151,27 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                 <MusicPlayer source={musicPath}/>
             </div>
             <StyledMain>
-              <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-              <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                <span>Who is this?</span>
-                <form onSubmit={handleSubmit} action="">
-                  <label htmlFor="item"></label>
-                  <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
-                    <option value="sonic">Sonic</option>
-                    <option value="tails">Tails</option>
-                    <option value="knuckles">Knuckles</option>
-                  </select>
-                  <label hidden htmlFor="x">
-                    <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
-                  </label>
-                  <label hidden htmlFor="y">
-                    <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
-                  </label>
-                  <button type="submit">Submit</button>
-                </form>
-              </HitBox>
+              <StyledImgContainer>
+                <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+                <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                  <span>Who is this?</span>
+                  <form onSubmit={handleSubmit} action="">
+                    <label htmlFor="item"></label>
+                    <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
+                      <option value="sonic">Sonic</option>
+                      <option value="tails">Tails</option>
+                      <option value="knuckles">Knuckles</option>
+                    </select>
+                    <label hidden htmlFor="x">
+                      <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
+                    </label>
+                    <label hidden htmlFor="y">
+                      <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
+                    </label>
+                    <button type="submit">Submit</button>
+                  </form>
+                </HitBox>
+              </StyledImgContainer>
             </StyledMain>
       <Footer />
     </>
