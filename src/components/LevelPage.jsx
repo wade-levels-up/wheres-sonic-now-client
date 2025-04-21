@@ -117,8 +117,22 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     };
   }, [imageUrl]);
 
-  const startGame = () => {
-    setGameStarted(true)
+  const startGame = async () => {
+
+    const response = await fetch(
+      `http://localhost:3030/levels`,
+      {
+        method: "GET",
+        credentials: "include", // Include cookies in the req
+      }
+    )
+
+    if (response.ok) {
+      setGameStarted(true)
+    } else {
+      const errorData = await response.json();
+      console.error(`${errorData.message}`);
+    }
   }
 
   const handleImageClick = (e) => {
