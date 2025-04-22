@@ -120,7 +120,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const startGame = async () => {
 
     const response = await fetch(
-      `http://localhost:3030/levels`,
+      `http://localhost:3030/levels/${name}`,
       {
         method: "GET",
         credentials: "include", // Include cookies in the req
