@@ -160,6 +160,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       `http://localhost:3030/levels`,
       {
         method: "POST",
+        credentials: "include", // Include cookies in the req
         headers: {
           "Content-type": "application/json",
         },
