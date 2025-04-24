@@ -97,8 +97,10 @@ const StyledModal = styled.div`
 `
 
 const LevelPage = ({ name, imageUrl, musicPath }) => {
-  const [gameStarted, setGameStarted] = useState(false);
-  const musicRef = useRef(null); 
+  const musicRef = useRef(null);
+
+  const [gameStarted, setGameStarted] = useState(false); 
+  const [gameOver, setGameOver] = useState(false);
   const [itemSelection, setItemSelection] = useState("Sonic");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState("none");
@@ -176,7 +178,16 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
         playSFX("correct");
         const lowerCaseItemSelection = itemSelection.toLowerCase()
         setItemState({ ...itemState, [lowerCaseItemSelection]: true });
-        alert(`You found ${itemSelection}!`);
+        if (data.allFound) {
+          setGameOver(true);
+          musicRef.current.pause();
+          playSFX("Level Complete")
+          setTimeout(() => {
+            alert("Congratulations! You found them all!")
+          }, 5000)
+        } else {
+          alert(`You found ${itemSelection}!`);
+        }
       } else {
         playSFX("wrong");
         alert(`That's not ${itemSelection}!`)
@@ -190,8 +201,12 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   useEffect(() => {
     if (gameStarted && musicRef.current) {
       musicRef.current.play(); 
+    } 
+
+    if (gameOver) {
+      musicRef.current.pause();
     }
-  }, [gameStarted]);
+  }, [gameStarted, gameOver]);
 
   return (
     <>
@@ -202,7 +217,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                {gameStarted ? (<GameScore itemState={itemState} />) : <></>}
+                {gameStarted ? (<GameScore itemState={itemState} gameOver={gameOver} />) : <></>}
                 <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
             </div>
             <StyledMain>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Timer from "./Timer";
 
 const GameScoreContainer = styled.div`
     display: flex;
@@ -28,7 +29,7 @@ const GameScoreContainer = styled.div`
     }
 `
 
-const GameScore = ({ itemState }) => {
+const GameScore = ({ itemState, gameOver }) => {
 
 
     return (
@@ -49,7 +50,8 @@ const GameScore = ({ itemState }) => {
                     <img src="/src/assets/knuckles-icon.png" alt="" />
                     <span>Found: {itemState.knuckles ? `✅` : `❌`}</span>
                 </li>
-            </ul> 
+            </ul>
+            <Timer gameOver={gameOver} />
         </GameScoreContainer>
     )
 }

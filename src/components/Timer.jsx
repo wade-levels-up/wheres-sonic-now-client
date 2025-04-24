@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
@@ -13,31 +13,44 @@ const StyledDiv = styled.div`
     cursor: pointer;
 `
 
-const Timer = () => {
+const Timer = ({gameOver}) => {
     const [time, setTime] = useState(0);
-    const [timeInterval, setTimeInterval] = useState(null);
+    const intervalRef = useRef(null); 
 
     function startTimer() {
-        setTimeInterval(setInterval(() => {
-            setTime((prev) => prev + 0.01)
-        }, 10))
+        if (intervalRef.current === null) {
+            intervalRef.current = setInterval(() => {
+                setTime((prev) => prev + 0.01);
+            }, 10);
+        }
     }
 
     function stopTimer() {
-        clearInterval(timeInterval);  
+        if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
     }
 
     function resetTimer() {
         setTime(0);
     }
 
+    useEffect(() => {
+        if (!gameOver) {
+            resetTimer();
+            startTimer();
+        } else {
+            stopTimer();
+        }
+
+        return () => stopTimer();
+    }, [gameOver]);
+
     return (
         <>
             <StyledDiv>
-                <span>Time: {time.toFixed(2)} seconds</span>
-                <button onClick={startTimer}>Start</button>
-                <button onClick={stopTimer}>Stop</button>
-                <button onClick={resetTimer}>Reset</button>
+                <span>Time: {time.toFixed(1)} seconds</span>
             </StyledDiv>
         </>
     )
