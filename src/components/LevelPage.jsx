@@ -103,7 +103,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState("none");
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
-  const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0}); 
+  const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0});
+  const [itemState, setItemState] = useState({ sonic: false, tails: false, knuckles: false});
+
 
   const { playSFX } = useContext(GlobalContext);
 
@@ -172,6 +174,8 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       const data = await response.json()
       if (data.isFound) {
         playSFX("correct");
+        const lowerCaseItemSelection = itemSelection.toLowerCase()
+        setItemState({ ...itemState, [lowerCaseItemSelection]: true });
         alert(`You found ${itemSelection}!`);
       } else {
         playSFX("wrong");
@@ -198,7 +202,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                {gameStarted ? (<GameScore />) : <></>}
+                {gameStarted ? (<GameScore itemState={itemState} />) : <></>}
                 <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
             </div>
             <StyledMain>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
 const GameScoreContainer = styled.div`
     display: flex;
@@ -29,8 +28,8 @@ const GameScoreContainer = styled.div`
     }
 `
 
-const GameScore = () => {
-    const [itemState, setItemState] = useState({ sonic: "hidden", tails: "hidden", knuckles: 'hidden'});
+const GameScore = ({ itemState }) => {
+
 
     return (
         <GameScoreContainer>
@@ -38,17 +37,17 @@ const GameScore = () => {
                 <li>
                     <span>Sonic</span>
                     <img src="/src/assets/sonic-icon.png" alt="" />
-                    <span>Found: {itemState.sonic === "hidden" ? `❌` : `✅`}</span>
+                    <span>Found: {itemState.sonic ? `✅` : `❌`}</span>
                 </li>
                 <li>
                     <span>Tails</span>
                     <img src="/src/assets/tails-icon.png" alt="" />
-                    <span>Found: {itemState.tails === "hidden" ? `❌` : `✅`}</span>
+                    <span>Found: {itemState.tails ? `✅` : `❌`}</span>
                 </li>
                 <li>
                     <span>Knuckles</span>
                     <img src="/src/assets/knuckles-icon.png" alt="" />
-                    <span>Found: {itemState.knuckles === "hidden" ? `❌` : `✅`}</span>
+                    <span>Found: {itemState.knuckles ? `✅` : `❌`}</span>
                 </li>
             </ul> 
         </GameScoreContainer>
