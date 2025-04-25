@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Button from "./Button";
 import MusicPlayer from "./MusicPlayer";
 import GameScore from "./GameScore";
+import GameOver from "./GameOver";
 import styled from "styled-components";
 
 const StyledImgArea = styled.img`
@@ -123,7 +124,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   }, [imageUrl]);
 
   const startGame = async () => {
-
     const response = await fetch(
       `http://localhost:3030/levels/${name}`,
       {
@@ -141,6 +141,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   }
 
   const handleImageClick = (e) => {
+
     setDisplayHitBox("flex");
     const rect = e.target.getBoundingClientRect(); // Get the image's position and size
     const x = e.clientX - rect.left; // Calculate x relative to the image
@@ -174,6 +175,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     )
 
     if (response.ok) {
+
       const data = await response.json()
       if (data.isFound) {
         playSFX("correct");
@@ -220,33 +222,37 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                 <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
             </div>
             <StyledMain>
-              {gameStarted ? (
-                  <StyledImgContainer>
-                  <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-                  <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                    <span>Who is this?</span>
-                    <form onSubmit={handleSubmit} action="">
-                      <label htmlFor="item"></label>
-                      <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
-                        <option value="Sonic">Sonic</option>
-                        <option value="Tails">Tails</option>
-                        <option value="Knuckles">Knuckles</option>
-                      </select>
-                      <label hidden htmlFor="x">
-                        <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
-                      </label>
-                      <label hidden htmlFor="y">
-                        <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
-                      </label>
-                      <button type="submit">Submit</button>
-                    </form>
-                  </HitBox>
-                </StyledImgContainer>
+              {gameOver ? (
+                <GameOver levelName={name} />
               ) : (
-                <StyledModal>
-                    <h2>Ready?</h2>
-                    <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
-                </StyledModal>
+                  gameStarted ? (
+                    <StyledImgContainer>
+                    <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+                    <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                      <span>Who is this?</span>
+                      <form onSubmit={handleSubmit}>
+                        <label htmlFor="item"></label>
+                        <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
+                          <option value="Sonic">Sonic</option>
+                          <option value="Tails">Tails</option>
+                          <option value="Knuckles">Knuckles</option>
+                        </select>
+                        <label hidden htmlFor="x">
+                          <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
+                        </label>
+                        <label hidden htmlFor="y">
+                          <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
+                        </label>
+                        <button type="submit">Submit</button>
+                      </form>
+                    </HitBox>
+                  </StyledImgContainer>
+                  ) : (
+                  <StyledModal>
+                      <h2>Ready?</h2>
+                      <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
+                  </StyledModal>
+                )
               )}
             </StyledMain>
       <Footer />

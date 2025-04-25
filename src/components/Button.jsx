@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../App";
 
 const StyledButton = styled.button`
-    width: 100px;
+    width: 120px;
     height: fit-content;
     font-size: 18px;
     font-family: 'system-ui', 'arial';
     font-weight: 350;
-    padding: 3px 8px;
+    padding: 2px;
     color: aliceblue;
     background-color: red;
     border: 2px outset gray;
     border-radius: 30px;
-    box-shadow: 1px 3px 3px white inset;
+    box-shadow: 1px 2px 2px white inset;
     cursor: pointer;
 
     &:hover {

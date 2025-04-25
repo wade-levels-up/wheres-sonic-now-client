@@ -30,6 +30,7 @@ const sfxOptionSelect = new Audio("/src/assets/sfx-option-select.mp3")
 const sfxWrong = new Audio("/src/assets/sfx-wrong.mp3")
 const sfxCorrect = new Audio("/src/assets/sfx-correct.mp3")
 const sfxLevelComplete = new Audio("/src/assets/level-complete.mp3")
+const sfxChaching = new Audio("/src/assets/sfx-chaching.mp3")
 
 //////
 
@@ -61,6 +62,11 @@ function playSFX(sfxName) {
   if (sfxName === "Level Complete") {
     sfxLevelComplete.play()
     sfxLevelComplete.currentTime = 0;
+  }
+
+  if (sfxName === "Chaching") {
+    sfxChaching.play()
+    sfxChaching.currentTime = 0;
   }
 }
 
