@@ -39,6 +39,24 @@
   }
 }
 
+@keyframes fly-across {
+  0% {
+    transform: translateX(-80vw)
+  }
+
+  25% {
+    transform: translateY(10px) translateX(-40vw);
+  }
+
+  75% {
+    transform: translateY(-10px) translateX(40vw);
+  }
+
+  100% {
+    transform: translateX(80vw)
+  }
+}
+
 @keyframes pulse-red {
   0% {
     filter: drop-shadow(0px 0px 30px red);

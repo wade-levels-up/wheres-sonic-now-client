@@ -12,6 +12,7 @@ const StyledMain = styled.main`
     background: center / contain repeat-x url("/src/assets/background-title.gif");
     justify-content: center;
     align-items: center;
+    background-color: blue;
 
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
@@ -30,6 +31,10 @@ const StyledMain = styled.main`
     }
 `
 
+const StyledAnimation = styled.img`
+    animation: 12s linear infinite fly-across;
+`
+
 const HomePage = () => {
 
 
@@ -45,6 +50,7 @@ const HomePage = () => {
                 <MusicPlayer source={"/src/assets/title-screen.mp3"} autoPlay={'true'}/>
             </div>
             <StyledMain>
+                <StyledAnimation src="/src/assets/plane.gif" alt="Sonic and Tails in plane"/>
                 <h2 style={{animation: "2s ease 1 fly-in"}}>Welcome to Find Sonic Fast</h2>
                 <h2 style={{animation: "3s ease 1 fly-in"}}>Have fun!</h2>
             </StyledMain>

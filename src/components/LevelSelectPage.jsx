@@ -15,6 +15,7 @@ const StyledMain = styled.main`
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    background-color: blue;
 `
 const StyledGrid = styled.div`
     display: grid;

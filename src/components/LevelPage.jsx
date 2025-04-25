@@ -35,6 +35,7 @@ const StyledMain = styled.main`
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    background-color: blue;
 `
 
 const HitBox = styled.div`
@@ -182,15 +183,13 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
           setGameOver(true);
           musicRef.current.pause();
           playSFX("Level Complete")
-          setTimeout(() => {
-            alert("Congratulations! You found them all!")
-          }, 5000)
+          console.log(`You found them all!`);
         } else {
-          alert(`You found ${itemSelection}!`);
+          console.log(`You found ${itemSelection}!`);
         }
       } else {
         playSFX("wrong");
-        alert(`That's not ${itemSelection}!`)
+        console.log(`That's not ${itemSelection}!`)
       }
     } else {
       const errorData = await response.json();
