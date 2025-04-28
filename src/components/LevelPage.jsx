@@ -109,6 +109,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
   const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0});
   const [itemState, setItemState] = useState({ sonic: false, tails: false, knuckles: false});
+  const [scores, setScores] = useState([]);
 
 
   const { playSFX } = useContext(GlobalContext);
@@ -199,7 +200,26 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     }
   }
 
+  const getAllLevelScores = async () => {
+    const response = await fetch(
+      `http://localhost:3030/scores/all`,
+      {
+        method: "GET",
+        credentials: "include", 
+      }
+    )
+
+    if (response.ok) {
+        const data = await response.json();
+        setScores(data.scores);
+    } else {
+      const errorData = await response.json();
+      console.error(`${errorData.message}`);
+    }
+}
+
   useEffect(() => {
+    getAllLevelScores()
     if (gameStarted && musicRef.current) {
       musicRef.current.play(); 
     } 

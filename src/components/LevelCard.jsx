@@ -33,7 +33,7 @@ const StyledH2 = styled.h2`
     letter-spacing: 3px;
 `
 
-const LevelCard = ({ title, href, src, alt }) => {
+const LevelCard = ({ title, href, src, alt, highestScore }) => {
     const { playSFX } = useContext(GlobalContext);
     const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ const LevelCard = ({ title, href, src, alt }) => {
         <StyledLevelCard onClick={handleSelect} onMouseEnter={() => playSFX("Option Select")}>
             <img src={src} alt={alt} />
             <StyledH2>{title}</StyledH2>
-            <span style={{width: "100%", textAlign: "left", padding: "6px", backgroundColor: "brown"}}>Best time:</span>
+            <span style={{width: "100%", textAlign: "left", padding: "6px", backgroundColor: "brown"}}>Best time: {highestScore && highestScore.name && highestScore.time ? `${highestScore.name} ${highestScore.time}` : "No times set"}</span>
         </StyledLevelCard>
     )
 }

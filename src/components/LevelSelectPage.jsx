@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "./Header";
 import MusicPlayer from "./MusicPlayer";
@@ -28,6 +29,44 @@ const StyledGrid = styled.div`
 `
 
 const LevelSelectPage = () => {
+    const [scores, setScores] = useState([]);
+
+    const getAllLevelScores = async () => {
+        const response = await fetch(
+          `http://localhost:3030/scores/all`,
+          {
+            method: "GET",
+            credentials: "include", 
+          }
+        )
+    
+        if (response.ok) {
+            const data = await response.json();
+            setScores(data.scores);
+        } else {
+          const errorData = await response.json();
+          console.error(`${errorData.message}`);
+        }
+    }
+
+    const findHighestScore = (levelName) => {
+        let highestScores = scores.filter((score) => score.levelId === levelName)
+        .sort((a, b) => {
+            if (+a.time < +b.time) return -1;
+            if (+a.time > +b.time) return 1;
+            return 0;
+        })
+        if (highestScores.length > 0) {
+            return highestScores[0]
+        } else {
+            return
+        }
+    }
+
+    useEffect(() => {
+        getAllLevelScores();
+    }, [])
+
     return (
         <>
             <Header title="Level Select"/>
@@ -41,12 +80,12 @@ const LevelSelectPage = () => {
             </div>
             <StyledMain>
                 <StyledGrid>
-                    <LevelCard title={"Angel Island Zone"} href={"/angel-island-zone"} src={"/src/assets/thumb-angelisland.png"} alt={"Angel Island Zone"}/>
-                    <LevelCard title={"Hydro City Zone"} href={"/hydro-city-zone"} src={"/src/assets/thumb-hydrocity.png"} alt={"Hydro City Zone"}/>
-                    <LevelCard title={"Marble Garden Zone"} href={"/marble-garden-zone"} src={"/src/assets/thumb-marblegarden.png"} alt={"Marble Garden Zone"}/>
-                    <LevelCard title={"Carnival Night Zone"} href={"/carnival-night-zone"} src={"/src/assets/thumb-carnivalnight.png"} alt={"Carnival Night Zone"}/>
-                    <LevelCard title={"Ice Cap Zone"} href={"/ice-cap-zone"} src={"/src/assets/thumb-icecap.png"} alt={"Ice Cap Zone"}/>
-                    <LevelCard title={"Launch Base Zone"} href={"/launch-base-zone"} src={"/src/assets/thumb-launchbase.png"} alt={"Launch Base Zone"}/>   
+                    <LevelCard highestScore={findHighestScore('angel-island-zone')} title={"Angel Island Zone"} href={"/angel-island-zone"} src={"/src/assets/thumb-angelisland.png"} alt={"Angel Island Zone"}/>
+                    <LevelCard highestScore={findHighestScore('hydro-city-zone')} title={"Hydro City Zone"} href={"/hydro-city-zone"} src={"/src/assets/thumb-hydrocity.png"} alt={"Hydro City Zone"}/>
+                    <LevelCard highestScore={findHighestScore('marble-garden-zone')} title={"Marble Garden Zone"} href={"/marble-garden-zone"} src={"/src/assets/thumb-marblegarden.png"} alt={"Marble Garden Zone"}/>
+                    <LevelCard highestScore={findHighestScore('carnival-night-zone')} title={"Carnival Night Zone"} href={"/carnival-night-zone"} src={"/src/assets/thumb-carnivalnight.png"} alt={"Carnival Night Zone"}/>
+                    <LevelCard highestScore={findHighestScore('ice-cap-zone')} title={"Ice Cap Zone"} href={"/ice-cap-zone"} src={"/src/assets/thumb-icecap.png"} alt={"Ice Cap Zone"}/>
+                    <LevelCard highestScore={findHighestScore('launch-base-zone')} title={"Launch Base Zone"} href={"/launch-base-zone"} src={"/src/assets/thumb-launchbase.png"} alt={"Launch Base Zone"}/>   
                 </StyledGrid>    
             </StyledMain>
             <Footer />
