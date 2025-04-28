@@ -82,6 +82,17 @@ const HitBox = styled.div`
     }
 `
 
+const Marker = styled.img`
+    width: 18px;
+    height: 80px;
+    display: var(--display);
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    z-index: 4;
+    filter: drop-shadow(0px 0px 30px gold);
+`
+
 const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
@@ -109,7 +120,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
   const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0});
   const [itemState, setItemState] = useState({ sonic: false, tails: false, knuckles: false});
-  const [scores, setScores] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
 
   const { playSFX } = useContext(GlobalContext);
@@ -179,6 +190,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
       const data = await response.json()
       if (data.isFound) {
+        setMarkers([...markers, {display: 'flex', x: clickPosition.x + 20, y: clickPosition.y - 40}])
         playSFX("correct");
         const lowerCaseItemSelection = itemSelection.toLowerCase()
         setItemState({ ...itemState, [lowerCaseItemSelection]: true });
@@ -200,26 +212,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     }
   }
 
-  const getAllLevelScores = async () => {
-    const response = await fetch(
-      `http://localhost:3030/scores/all`,
-      {
-        method: "GET",
-        credentials: "include", 
-      }
-    )
-
-    if (response.ok) {
-        const data = await response.json();
-        setScores(data.scores);
-    } else {
-      const errorData = await response.json();
-      console.error(`${errorData.message}`);
-    }
-}
-
   useEffect(() => {
-    getAllLevelScores()
     if (gameStarted && musicRef.current) {
       musicRef.current.play(); 
     } 
@@ -248,6 +241,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                   gameStarted ? (
                     <StyledImgContainer>
                     <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+                    {markers.map((marker) => {
+                      return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
+                    })}
                     <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
                       <span>Who is this?</span>
                       <form onSubmit={handleSubmit}>
