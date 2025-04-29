@@ -40,8 +40,8 @@ const StyledMain = styled.main`
 `
 
 const HitBox = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border: 3px solid red;
     border-radius: 6px;
     display: var(--display);
@@ -49,36 +49,29 @@ const HitBox = styled.div`
     left: var(--x);
     top: var(--y);
     z-index: 5;
-
-    span {
-      position: absolute;
-      text-align: center;
-      width: 100px;
-      background-color: rgba(0, 0, 0, 0.8);
-      left: -24px;
-      top: -36px;
-      border-radius: 6px;
-    }
-
-    form {
-      position: relative;
-      top: 60px;
-      left: -22px;
-    }
-
-    select {
-      cursor: pointer;
-      padding: 3px 6px;
-      color: aliceblue;
-      background-color: black;
-      border-radius: 6px;
-    }
+    background-color: transparent;
+    outline: 3px ridge brown;
+    animation: 200ms ease-in 1 zoom;
 
     button {
       width: 100%;
       color: aliceblue;
       background-color: red;
       border-radius: 6px;
+      position: absolute;
+      padding: 0px 3px;
+    }
+
+    button:nth-child(1) {
+      bottom: -30px;
+    }
+
+    button:nth-child(2) {
+      bottom: -50px;
+    }
+
+    button:nth-child(3) {
+      bottom: -70px;
     }
 `
 
@@ -114,9 +107,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
   const [gameStarted, setGameStarted] = useState(false); 
   const [gameOver, setGameOver] = useState(false);
-  const [itemSelection, setItemSelection] = useState("Sonic");
+  const [itemSelection, setItemSelection] = useState("sonic");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
-  const [displayHitBox, setDisplayHitBox] = useState("none");
+  const [displayHitBox, setDisplayHitBox] = useState({ display: "none" });
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
   const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0});
   const [itemState, setItemState] = useState({ sonic: false, tails: false, knuckles: false});
@@ -153,8 +146,12 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   }
 
   const handleImageClick = (e) => {
-
-    setDisplayHitBox("flex");
+    playSFX("Option Select")
+    setDisplayHitBox({display: "none"});
+    setTimeout(() => {
+      setDisplayHitBox({display: "flex"});
+    }, 0);
+    
     const rect = e.target.getBoundingClientRect(); // Get the image's position and size
     const x = e.clientX - rect.left; // Calculate x relative to the image
     const y = e.clientY - rect.top;  // Calculate y relative to the image
@@ -165,12 +162,12 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
     console.log(normalizedX, normalizedY);
     setPixelPosition({ x: normalizedX, y: normalizedY});
-    setClickedPosition({ x: x - 25, y: y - 25})
+    setClickedPosition({ x: x - 35, y: y - 35})
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setDisplayHitBox("none");
+  const handleSubmit = async (item) => {
+    setItemSelection(item)
+    setDisplayHitBox({display: "none"});
 
     const response = await fetch(
       `http://localhost:3030/levels`,
@@ -180,7 +177,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ name: itemSelection.toLowerCase(), levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
+        body: JSON.stringify({ name: item.toLowerCase(), levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
       }
     )
 
@@ -242,24 +239,12 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                     {markers.map((marker) => {
                       return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
                     })}
-                    <HitBox style={{ '--display': displayHitBox, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                      <span>Who is this?</span>
-                      <form onSubmit={handleSubmit}>
-                        <label htmlFor="item"></label>
-                        <select name="item" id="item" value={itemSelection} onChange={(e) => setItemSelection(e.target.value)}>
-                          <option value="Sonic">Sonic</option>
-                          <option value="Tails">Tails</option>
-                          <option value="Knuckles">Knuckles</option>
-                        </select>
-                        <label hidden htmlFor="x">
-                          <input type="number" name="x" id="x" value={clickPosition.x} readOnly/>
-                        </label>
-                        <label hidden htmlFor="y">
-                          <input type="number" name="y" id="y" value={clickPosition.y} readOnly/>
-                        </label>
-                        <button type="submit">Submit</button>
-                      </form>
-                    </HitBox>
+                    {displayHitBox.display === "flex" ? ( 
+                    <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                      <button onClick={() => handleSubmit('sonic')}>Sonic</button>
+                      <button onClick={() => handleSubmit('tails')}>Tails</button>
+                      <button onClick={() => handleSubmit('knuckles')}>Knuckles</button>
+                    </HitBox>) : null}
                   </StyledImgContainer>
                   ) : (
                   <StyledModal>
