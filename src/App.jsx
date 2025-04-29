@@ -18,8 +18,24 @@ const router = createBrowserRouter([
     element: <LevelPage name={"angel-island-zone"} musicPath={"/src/assets/angelislandzone.mp3"} imageUrl={"src/assets/angel-island-zone.webp"}/>
   },
   {
+    path: "/hydro-city-zone",
+    element: <LevelPage name={"hydro-city-zone"} musicPath={"/src/assets/hydrocityzone.mp3"} imageUrl={"src/assets/hydro-city-zone.webp"}/>
+  },
+  {
+    path: "/marble-garden-zone",
+    element: <LevelPage name={"marble-garden-zone"} musicPath={"/src/assets/marblegardenzone.mp3"} imageUrl={"src/assets/marble-garden-zone.webp"}/>
+  },
+  {
+    path: "/carnival-night-zone",
+    element: <LevelPage name={"carnival-night-zone"} musicPath={"/src/assets/carnivalnightzone.mp3"} imageUrl={"src/assets/carnival-night-zone.webp"}/>
+  },
+  {
     path: "/ice-cap-zone",
     element: <LevelPage name={"ice-cap-zone"} musicPath={"/src/assets/icecapzone.mp3"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
+  },
+  {
+    path: "/launch-base-zone",
+    element: <LevelPage name={"launch-base-zone"} musicPath={"/src/assets/launchbasezone.mp3"} imageUrl={"src/assets/launch-base-zone.webp"}/>
   },
 ])
 

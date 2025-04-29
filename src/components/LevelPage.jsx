@@ -172,8 +172,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     e.preventDefault();
     setDisplayHitBox("none");
 
-    console.log(itemSelection, name, clickPosition.x, clickPosition.y)
-
     const response = await fetch(
       `http://localhost:3030/levels`,
       {
