@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../App";
 
 const StyledButton = styled.button`
-    width: 120px;
+    width: 80px;
     height: fit-content;
     font-size: 18px;
     font-family: 'system-ui', 'arial';

@@ -70,8 +70,8 @@ const LevelSelectPage = () => {
     return (
         <>
             <Header title="Level Select"/>
-            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", flexWrap: "wrap"}}>
-                <nav style={{display: "flex", gap: "16px"}}>
+            <div className="navContainer">
+                <nav>
                     <Button text="Home" href={"/"}/>
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>

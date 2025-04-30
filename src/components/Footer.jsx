@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const StyledFooter = styled.footer`
     display: flex;
-    background-color: black;
+    background-color: aliceblue;
+    color: black;
     padding: 6px;
     justify-content: space-between;
     font-weight: 800;

@@ -36,10 +36,13 @@ const StyledTable = styled.table`
 
 const StyledForm = styled.form`
     display: flex;
+    flex-wrap: wrap;
 
     ul {
         display: flex;
         gap: 12px;
+        justify-content: space-evenly;
+        align-items: center;
     }
 
     input, button, label {
@@ -189,7 +192,7 @@ const GameOver = ({ levelName }) => {
                             })}
                         </tbody>
                     </StyledTable>
-                    <Button text="Play Again" href={`/level-select`}/>
+                    <Button text="Restart" href={`/level-select`}/>
                 </>
             ) : (
                 <>
@@ -204,7 +207,7 @@ const GameOver = ({ levelName }) => {
                                     <input type="text" id="name" name="name" value={name} minLength={2} maxLength={16} required onChange={(e) => setName(e.target.value)}/>
                                 </li>
                                 <li>
-                                    <button type="submit">Save Score</button>
+                                    <button type="submit">Save</button>
                                 </li>
                             </ul>
                         </StyledForm>

@@ -8,11 +8,10 @@ const StyledHeader = styled.header`
     gap: 32px;
     font-size: 2.5rem;
     font-family: sage, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: black;
 `
 
 const Header = ({ title }) => {
-    return <StyledHeader>{title}</StyledHeader>
+    return <StyledHeader className="logo">{title}</StyledHeader>
 }
 
 export default Header;

@@ -83,7 +83,6 @@ const Marker = styled.img`
     left: var(--x);
     top: var(--y);
     z-index: 4;
-    filter: drop-shadow(0px 0px 30px gold);
 `
 
 const StyledModal = styled.div`
@@ -107,7 +106,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
   const [gameStarted, setGameStarted] = useState(false); 
   const [gameOver, setGameOver] = useState(false);
-  const [itemSelection, setItemSelection] = useState("sonic");
+  const [itemSelection, setItemSelection] = useState("");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState({ display: "none" });
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
@@ -166,7 +165,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   };
 
   const handleSubmit = async (item) => {
-    setItemSelection(item)
     setDisplayHitBox({display: "none"});
 
     const response = await fetch(
@@ -187,19 +185,18 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       if (data.isFound) {
         setMarkers([...markers, {display: 'flex', x: clickPosition.x + 20, y: clickPosition.y - 40}])
         playSFX("correct");
-        const lowerCaseItemSelection = itemSelection.toLowerCase()
-        setItemState({ ...itemState, [lowerCaseItemSelection]: true });
+        setItemState({ ...itemState, [item]: true });
         if (data.allFound) {
           setGameOver(true);
           musicRef.current.pause();
           playSFX("Level Complete")
           console.log(`You found them all!`);
         } else {
-          console.log(`You found ${itemSelection}!`);
+          console.log(`You found ${item}!`);
         }
       } else {
         playSFX("wrong");
-        console.log(`That's not ${itemSelection}!`)
+        console.log(`That's not ${item}!`)
       }
     } else {
       const errorData = await response.json();
@@ -220,8 +217,8 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   return (
     <>
       <Header title={name}/>
-            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", flexWrap: "wrap"}}>
-                <nav style={{display: "flex", gap: "16px"}}>
+            <div className="navContainer">
+                <nav>
                     <Button text="Home" href={"/"}/>
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>

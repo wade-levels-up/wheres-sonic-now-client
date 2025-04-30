@@ -109,6 +109,24 @@
   animation-fill-mode: forwards;
 }
 
+.logo {
+  font-family: sage;
+  background-color: aliceblue;
+  color: blue;
+  padding: 0px 6px;
+  display: block;
+}
+
+.navContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: aliceblue;
+  padding: 10px 6px;
+}
+
 .gameboard {
   display: flex;
   flex: 1;
@@ -116,6 +134,17 @@
   overflow: scroll;
   width: 100%;
 }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+main {
+  padding: 25px 0px;
+}
+
 
 @media (min-width: 1500px) {
   .gameboard {

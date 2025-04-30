@@ -6,10 +6,11 @@ const StyledDiv = styled.div`
     justify-content: center;
     align-items: center;
     font-family: monospace;
-    border: 1px solid red;
+    border: 3px ridge gold;
     padding: 6px;
     gap: 6px;
     height: 32px;
+    color: black;
     cursor: pointer;
 `
 

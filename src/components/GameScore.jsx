@@ -5,6 +5,7 @@ const GameScoreContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
+    color: black;
 
     img {
         image-rendering: pixelated;

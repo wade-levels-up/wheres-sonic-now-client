@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LevelSelectPage from "./components/LevelSelectPage";
 import HomePage from "./components/HomePage";
 import LevelPage from "./components/LevelPage";
+import AboutPage from "./components/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/level-select",
     element: <LevelSelectPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
   {
     path: "/angel-island-zone",
