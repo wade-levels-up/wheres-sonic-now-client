@@ -50,8 +50,9 @@ const LevelSelectPage = () => {
     }
 
     const findHighestScore = (levelName) => {
-        let highestScores = scores.filter((score) => score.levelId === levelName)
-        .sort((a, b) => {
+        let highestScores = scores.filter((score) => {
+            return score.levelId === levelName && score.name
+        }).sort((a, b) => {
             if (+a.time < +b.time) return -1;
             if (+a.time > +b.time) return 1;
             return 0;
