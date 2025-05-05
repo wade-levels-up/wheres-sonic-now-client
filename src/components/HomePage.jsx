@@ -7,7 +7,7 @@ import Button from "./Button";
 const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
     flex: 1;
     background: center / contain repeat-x url("/src/assets/background-title.gif");
     justify-content: center;
@@ -18,7 +18,7 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
-    p, h2 {
+    p, h2, h3 {
         font-size: 2rem;
         font-weight: 900;
         width: fit-content;
@@ -27,12 +27,18 @@ const StyledMain = styled.main`
         border-radius: 8px;
         text-align: center;
         text-wrap: balance;
-        filter: drop-shadow(0px 0px 5px black);
+        filter: drop-shadow(0px 0px 2px black);
+    }
+
+    h3 {
+        font-size: 1.5rem;
     }
 `
 
 const StyledAnimation = styled.img`
     animation: 12s linear infinite fly-across;
+    position: absolute;
+    top: 30%;
 `
 
 const HomePage = () => {
@@ -51,8 +57,8 @@ const HomePage = () => {
             </div>
             <StyledMain>
                 <StyledAnimation src="/src/assets/plane.gif" alt="Sonic and Tails in plane"/>
-                <h2 style={{animation: "2s ease 1 fly-in"}}>Welcome to Find Sonic Fast</h2>
-                <h2 style={{animation: "3s ease 1 fly-in"}}>Have fun!</h2>
+                <h2 style={{animation: "2s ease 1 fly-in"}}>Welcome to Find Sonic Fast!</h2>
+                <h3 style={{animation: "3s ease 1 fly-in"}}>How fast can you find Sonic and the team?</h3>
             </StyledMain>
             <Footer />
         </>

@@ -5,6 +5,11 @@ const StyledAudio = styled.audio`
     border: 6px ridge gold;
     border-radius: 50px;
     margin: 16px 0px;
+    display: none;
+
+    @media (min-width: 600px) {
+        display: block;
+    }
 `
 
 const MusicPlayer = forwardRef(({ source, autoPlay }, ref) => {

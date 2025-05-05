@@ -4,8 +4,8 @@ import Timer from "./Timer";
 const GameScoreContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    color: black;
+    gap: 6px;
+    color: black;    
 
     img {
         image-rendering: pixelated;
@@ -25,8 +25,41 @@ const GameScoreContainer = styled.div`
         justify-content: center;
         align-items: center;
         border: 3px ridge gold;
-        padding: 3px 18px;
+        padding: 2px 18px;
         gap: 3px;
+    }
+
+    li div div {
+        display: flex;
+        gap: 12px;
+    }
+    
+
+    @media (max-width: 600px) {
+        flex-direction: row;
+        align-items: center;
+
+         ul {
+            gap: 2px;
+         }
+
+         li {
+            padding: 2px 6px;
+         }
+
+        img {
+            width: 40px;
+        }
+
+        li div {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        li p {
+            display: none;
+        }
     }
 `
 
@@ -38,18 +71,33 @@ const GameScore = ({ itemState, gameOver }) => {
             <ul>
                 <li>
                     <span>Sonic</span>
-                    <img src="/src/assets/sonic-icon.png" alt="" />
-                    <span>Found: {itemState.sonic ? `✅` : `❌`}</span>
+                    <div>
+                        <img src="/src/assets/sonic-icon.png" alt="" />
+                        <div>
+                            <p>Found: </p>
+                            <span>{itemState.sonic ? `✅` : `❌`}</span>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <span>Tails</span>
-                    <img src="/src/assets/tails-icon.png" alt="" />
-                    <span>Found: {itemState.tails ? `✅` : `❌`}</span>
+                    <div>
+                        <img src="/src/assets/tails-icon.png" alt="" />
+                        <div>
+                            <p>Found: </p>
+                            <span>{itemState.tails ? `✅` : `❌`}</span>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <span>Knuckles</span>
-                    <img src="/src/assets/knuckles-icon.png" alt="" />
-                    <span>Found: {itemState.knuckles ? `✅` : `❌`}</span>
+                    <div>
+                        <img src="/src/assets/knuckles-icon.png" alt="" />
+                        <div>
+                            <p>Found: </p>
+                            <span>{itemState.knuckles ? `✅` : `❌`}</span>
+                        </div>
+                    </div>
                 </li>
             </ul>
             <Timer gameOver={gameOver} />

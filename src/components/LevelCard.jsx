@@ -8,12 +8,14 @@ const StyledLevelCard = styled.div`
     flex-direction: column;
     max-width: 336px;
     height: fit-content;
-    border: 6px gold ridge;
+    border: 8px gold ridge;
+    border-radius: 3px;
     text-decoration: none;
     text-align: center;
     gap: 8px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
     transition: scale 300ms ease;
+    will-change: scale;
 
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
@@ -22,6 +24,7 @@ const StyledLevelCard = styled.div`
     &:hover {
         outline: 6px solid red;
         cursor: pointer;
+        scale: 1.01;
     }
 `
 
@@ -31,6 +34,7 @@ const StyledH2 = styled.h2`
     padding: 6px;
     color: aliceblue;
     letter-spacing: 3px;
+    background-color: rgba(0, 0, 255, 0.8);
 `
 
 const LevelCard = ({ title, href, src, alt, highestScore }) => {

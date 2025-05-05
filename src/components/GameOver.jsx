@@ -4,7 +4,25 @@ import { GlobalContext } from "../App";
 import Button from "./Button";
 
 const StyledFormContainer = styled.div`
-text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const StyledDiv = styled.div`
+    text-align: center;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 8px;
+    width: 100%;
+
+    p {
+        max-width: 40ch;
+    }
 `
 
 const StyledTable = styled.table`
@@ -16,6 +34,7 @@ const StyledTable = styled.table`
     border: 3px ridge gold;
     text-align: left;
     animation: 2s ease-in-out 1 fade-in;
+    margin-bottom: 6px;
 
     thead {
         background-color: brown;
@@ -40,8 +59,17 @@ const StyledForm = styled.form`
 
     ul {
         display: flex;
-        gap: 12px;
-        justify-content: space-evenly;
+        flex-direction: column;
+        padding: 12px;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
     }
 
@@ -49,6 +77,7 @@ const StyledForm = styled.form`
         font-size: 16px;
         padding: 6px 8px;
         border-radius: 8px;
+        text-align: center;
     }
 
     button {
@@ -151,9 +180,9 @@ const GameOver = ({ levelName }) => {
     return (
         <>
             {scoreSubmitted ? (
-                <>
+                <StyledDiv>
                     <StyledTable>
-                        <caption>Top Scores for {capitalizeString(levelName)}</caption>
+                        <caption>Top Scores - {capitalizeString(levelName)}</caption>
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -175,7 +204,7 @@ const GameOver = ({ levelName }) => {
                                 if (score.levelId === levelName && score.name) {
                                     if (score.name === name) {
                                         return (
-                                            <tr style={{ border: "1px solid red"}}>
+                                            <tr style={{ border: "1px solid gold", backgroundColor: "red", color: "black"}}>
                                                 <th scope="row">{score.name}</th>
                                                 <td>{score.time}s</td>
                                             </tr>    
@@ -193,12 +222,12 @@ const GameOver = ({ levelName }) => {
                         </tbody>
                     </StyledTable>
                     <Button text="Restart" href={`/level-select`}/>
-                </>
+                </StyledDiv>
             ) : (
-                <>
+                <StyledDiv>
                     <h2>Congratulations!</h2>
                     <p>You found them all in <span style={{color: "red", fontWeight: "800"}}><u>{time}</u></span> seconds.</p>
-                    <p>Fill in the form below to submit your score and see how you went against other players.</p>
+                    <p>Fill in your name below, submit your score and see how you went against other players.</p>
                     <StyledFormContainer>
                         <StyledForm onSubmit={handleSubmit}>
                             <ul>
@@ -212,7 +241,7 @@ const GameOver = ({ levelName }) => {
                             </ul>
                         </StyledForm>
                     </StyledFormContainer>
-                </>
+                </StyledDiv>
             )}
         </>
     )

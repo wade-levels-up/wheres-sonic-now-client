@@ -42,36 +42,42 @@ const StyledMain = styled.main`
 const HitBox = styled.div`
     width: 70px;
     height: 70px;
-    border: 3px solid red;
+    border: 3px ridge gold;
     border-radius: 6px;
     display: var(--display);
     position: absolute;
     left: var(--x);
     top: var(--y);
     z-index: 5;
-    background-color: transparent;
-    outline: 3px ridge brown;
+    outline: 3px solid yellow;
     animation: 200ms ease-in 1 zoom;
 
     button {
-      width: 100%;
+      width: 76px;
+      font-size: 16px;
       color: aliceblue;
       background-color: red;
       border-radius: 6px;
       position: absolute;
-      padding: 0px 3px;
+      padding: 3px 3px;
+      cursor: pointer;
     }
 
     button:nth-child(1) {
-      bottom: -30px;
+      bottom: -36px;
+      left: -6px;
+      background-color: blue;
     }
 
     button:nth-child(2) {
-      bottom: -50px;
+      left: -6px;
+      bottom: -68px;
+      background-color: orange;
     }
 
     button:nth-child(3) {
-      bottom: -70px;
+      left: -6px;
+      bottom: -102px;
     }
 `
 
@@ -106,7 +112,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
 
   const [gameStarted, setGameStarted] = useState(false); 
   const [gameOver, setGameOver] = useState(false);
-  const [itemSelection, setItemSelection] = useState("");
   const [originalImageSize, setOriginalImageSize] = useState({ width: 0, height: 0 });
   const [displayHitBox, setDisplayHitBox] = useState({ display: "none" });
   const [clickPosition, setClickedPosition] = useState({ x: 0, y: 0});
@@ -217,40 +222,42 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   return (
     <>
       <Header title={name}/>
-            <div className="navContainer">
-                <nav>
-                    <Button text="Home" href={"/"}/>
-                    <Button text="About" href={"/about"}/>
-                    <Button text="Credits" href={"/credits"}/>
-                </nav>
-                {gameStarted ? (<GameScore itemState={itemState} gameOver={gameOver} />) : <></>}
-                <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
-            </div>
-            <StyledMain>
-              {gameOver ? (
-                <GameOver levelName={name} />
-              ) : (
-                  gameStarted ? (
-                    <StyledImgContainer>
-                    <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-                    {markers.map((marker) => {
-                      return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
-                    })}
-                    {displayHitBox.display === "flex" ? ( 
-                    <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                      <button onClick={() => handleSubmit('sonic')}>Sonic</button>
-                      <button onClick={() => handleSubmit('tails')}>Tails</button>
-                      <button onClick={() => handleSubmit('knuckles')}>Knuckles</button>
-                    </HitBox>) : null}
-                  </StyledImgContainer>
-                  ) : (
-                  <StyledModal>
-                      <h2>Ready?</h2>
-                      <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
-                  </StyledModal>
-                )
-              )}
-            </StyledMain>
+      <div className="navContainer">
+          {gameStarted && !gameOver ? 
+            (<GameScore itemState={itemState} gameOver={gameOver} />) : 
+            <nav>
+            <Button text="Home" href={"/"}/>
+            <Button text="About" href={"/about"}/>
+            <Button text="Credits" href={"/credits"}/>
+            </nav>
+          }
+          <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
+      </div>
+      <StyledMain>
+        {gameOver ? (
+          <GameOver levelName={name} />
+        ) : (
+            gameStarted ? (
+              <StyledImgContainer>
+              <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+              {markers.map((marker) => {
+                return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
+              })}
+              {displayHitBox.display === "flex" ? ( 
+              <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                <button onClick={() => handleSubmit('sonic')}>Sonic</button>
+                <button onClick={() => handleSubmit('tails')}>Tails</button>
+                <button onClick={() => handleSubmit('knuckles')}>Knuckles</button>
+              </HitBox>) : null}
+            </StyledImgContainer>
+            ) : (
+            <StyledModal>
+                <h2>Ready?</h2>
+                <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
+            </StyledModal>
+          )
+        )}
+      </StyledMain>
       <Footer />
     </>
   )

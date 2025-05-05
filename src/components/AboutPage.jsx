@@ -9,6 +9,7 @@ const StyledMain = styled.main`
     flex-direction: column;
     gap: 12px;
     flex: 1;
+    padding: 24px 0px;
     background: center / contain repeat-x url("/src/assets/background-title.gif");
     justify-content: center;
     align-items: center;

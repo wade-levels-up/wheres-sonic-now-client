@@ -12,6 +12,13 @@ const StyledDiv = styled.div`
     height: 32px;
     color: black;
     cursor: pointer;
+    flex: 1;
+    font-size: 14px;
+
+
+    @media (max-width: 600px) {
+        height: auto;
+    }
 `
 
 const Timer = ({gameOver}) => {
@@ -51,7 +58,7 @@ const Timer = ({gameOver}) => {
     return (
         <>
             <StyledDiv>
-                <span>Time: {time.toFixed(1)} seconds</span>
+                <span>⏰ {time.toFixed(1)}s</span>
             </StyledDiv>
         </>
     )
