@@ -8,6 +8,13 @@ const StyledFormContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .errorMsg {
+        color: red;
+        font-weight: 700;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 4px;
+    }
 `
 
 const StyledDiv = styled.div`
@@ -107,6 +114,7 @@ const GameOver = ({ levelName }) => {
     const [name, setName] = useState("");
     const [scores, setScores] = useState([]);
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
+    const [error, setError] = useState("");
 
     const { playSFX } = useContext(GlobalContext);
 
@@ -162,13 +170,13 @@ const GameOver = ({ levelName }) => {
         )
     
         if (response.ok) {
-            console.log(`Score saved!`);
             getAllLevelScores();
             setScoreSubmitted(true);
             playSFX("Chaching");
+            setError("")
         } else {
             const errorData = await response.json();
-            console.error(`${errorData.message}`);
+            setError(`${errorData.message}`)
         }
       }
 
@@ -226,7 +234,7 @@ const GameOver = ({ levelName }) => {
             ) : (
                 <StyledDiv>
                     <h2>Congratulations!</h2>
-                    <p>You found them all in <span style={{color: "red", fontWeight: "800"}}><u>{time}</u></span> seconds.</p>
+                    <p>You found them all in <span style={{color: "gold", fontWeight: "800"}}><u>{time}</u></span> seconds.</p>
                     <p>Fill in your name below, submit your score and see how you went against other players.</p>
                     <StyledFormContainer>
                         <StyledForm onSubmit={handleSubmit}>
@@ -238,6 +246,9 @@ const GameOver = ({ levelName }) => {
                                 <li>
                                     <button type="submit">Save</button>
                                 </li>
+                                {error ? (<li>
+                                    <p className="errorMsg">{error}</p>
+                                </li>) : null}
                             </ul>
                         </StyledForm>
                     </StyledFormContainer>

@@ -164,7 +164,8 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     const normalizedX = (x / rect.width) * originalImageSize.width;
     const normalizedY = (y / rect.height) * originalImageSize.height;
 
-    console.log(normalizedX, normalizedY);
+    // Uncomment in the event I need to check x and y coords
+    // console.log(normalizedX, normalizedY);
     setPixelPosition({ x: normalizedX, y: normalizedY});
     setClickedPosition({ x: x - 35, y: y - 35})
   };
@@ -195,13 +196,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
           setGameOver(true);
           musicRef.current.pause();
           playSFX("Level Complete")
-          console.log(`You found them all!`);
-        } else {
-          console.log(`You found ${item}!`);
-        }
+        } 
       } else {
         playSFX("wrong");
-        console.log(`That's not ${item}!`)
       }
     } else {
       const errorData = await response.json();
