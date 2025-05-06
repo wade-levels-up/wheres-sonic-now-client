@@ -74,7 +74,7 @@ const GameScore = ({ itemState, gameOver }) => {
                 <li>
                     <span>Sonic</span>
                     <div>
-                        <img src="/src/assets/sonic-icon.png" alt="" />
+                        <img src="/assets/sonic-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
                             <span>{itemState.sonic ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
@@ -84,7 +84,7 @@ const GameScore = ({ itemState, gameOver }) => {
                 <li>
                     <span>Tails</span>
                     <div>
-                        <img src="/src/assets/tails-icon.png" alt="" />
+                        <img src="/assets/tails-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
                             <span>{itemState.tails ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
@@ -94,7 +94,7 @@ const GameScore = ({ itemState, gameOver }) => {
                 <li>
                     <span>Knuckles</span>
                     <div>
-                        <img src="/src/assets/knuckles-icon.png" alt="" />
+                        <img src="/assets/knuckles-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
                             <span>{itemState.knuckles ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
