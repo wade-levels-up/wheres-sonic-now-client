@@ -142,7 +142,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const startGame = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://${import.meta.env.API}/levels/${name}`,
+      `https://${import.meta.env.VITE_API}/levels/${name}`,
       {
         method: "GET",
         credentials: "include", // Include cookies in the req
