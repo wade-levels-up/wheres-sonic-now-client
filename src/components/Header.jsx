@@ -18,7 +18,9 @@ const StyledHeader = styled.header`
 `
 
 const Header = ({ title }) => {
-    return <StyledHeader className="logo">{title}</StyledHeader>
+    return <StyledHeader className="logo">
+                {title}
+            </StyledHeader>
 }
 
 export default Header;

@@ -128,6 +128,9 @@
   position: sticky;
   top: 0px;
   z-index: 10;
+  background: url("/src/assets/checkered.png") center repeat; 
+  border-top: 6px ridge gold;
+  border-bottom: 6px ridge gold;
 }
 
 .gameboard {
@@ -141,9 +144,12 @@
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px; 
+  gap: 6px;
 }
 
+main {
+  border-bottom: 6px ridge gold;
+}
 
 @media (min-width: 1500px) {
   .gameboard {

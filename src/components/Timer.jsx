@@ -13,7 +13,8 @@ const StyledDiv = styled.div`
     color: black;
     cursor: pointer;
     flex: 1;
-    font-size: 14px;
+    font-size: 16px;
+    background: linear-gradient(rgba(202, 153, 67) 20%, white 80%);
 
 
     @media (max-width: 600px) {

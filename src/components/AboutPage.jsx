@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import MusicPlayer from "./MusicPlayer";
 import Button from "./Button";
 
+
 const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
@@ -64,20 +65,20 @@ const AboutPage = () => {
             </div>
             <StyledMain>
             <img src="/src/assets/tails-teh-one.gif" alt="Tails being silly" width={'100px'}/>
-                <h2>Hi, My name is Wade<br></br>And this is <span className="logo">Find Sonic Fast</span></h2>
+                <h2>Hi, I'm Wade!<br></br>And this is <span className="logo">Find Sonic Fast</span></h2>
                 <p>
-                    This fan project game was inspired by the <a href="https://www.amazon.com.au/Wheres-Sonic-Now/dp/0721425429">'Where's Sonic Now'</a> book by Ladybird and also the <a href="https://en.wikipedia.org/wiki/Sonic_%26_Knuckles">Sonic & Knuckles</a> game by Sega.  
+                    A fan project web game inspired by the <a href="https://www.amazon.com.au/Wheres-Sonic-Now/dp/0721425429">'Where's Sonic Now'</a> book by Ladybird UK.<br></br> I'm also a huge fan of the <a href="https://en.wikipedia.org/wiki/Sonic_%26_Knuckles">Sonic & Knuckles</a> game by Sega.  
                 </p>
                 <p>
-                The game is not run for profit. Images, artwork, music and sound effects have been used from both of my sources of inspiration above and accessed through <a href="https://archive.org/details/sonic3_knuckles_ost/48-Act+2+Boss+Theme.mp3">Internet Archive</a> as well as <a href="https://info.sonicretro.org/Where%27s_Sonic_Now%3F">Sonic Retro</a>.
+                The game is not run for profit.<br></br> Images, artwork, music and sound effects have been accessed through <a href="https://archive.org/details/sonic3_knuckles_ost/48-Act+2+Boss+Theme.mp3">Internet Archive</a> as well as <a href="https://info.sonicretro.org/Where%27s_Sonic_Now%3F">Sonic Retro</a>.
                 </p>
                 <p>
-                    As a budding, self-taught, full-stack web developer I challenged myself to create a 'Where's Wally' style game with a timer and leaderboard.<br></br>
-                    After some time mulling over the idea I recalled the 'Where's Sonic Now' and 'Where's Sonic' books from my childhood.<br></br>
-                    Having a timer made a lot more sense now, especially for a Sonic game where you've <q>gotta go fast</q>.
+                    As a budding web developer I challenged myself to create a 'Where's Wally' style game with a timer and leaderboard.<br></br><br></br>
+                    After some time thinking over the idea I recalled the 'Where's Sonic Now' and 'Where's Sonic' books from my childhood which the game levels are based upon.<br></br><br></br>
+                    Being a Sonic game, having a timer to make things competitive like a race felt like it made sense!
                 </p>
                 <p>
-                    I'm a huge fan of the original Sega Sonic games and this was absolutely an excuse for a trip down nostalgia lane.
+                    Growing up with the original Sega Sonic games, this project was absolutely an excuse for a trip down nostalgia lane.
                 </p>
                 <p>
                     I hope you have as much fun playing through the levels as I did piecing this together! ✌🏻

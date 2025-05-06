@@ -7,7 +7,8 @@ const StyledFooter = styled.footer`
     padding: 6px;
     justify-content: space-between;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    color: blue;
     font-family: monospace;
 `
 

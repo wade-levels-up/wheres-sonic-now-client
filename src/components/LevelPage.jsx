@@ -7,6 +7,7 @@ import MusicPlayer from "./MusicPlayer";
 import GameScore from "./GameScore";
 import GameOver from "./GameOver";
 import styled from "styled-components";
+import Loader from "./Loader";
 
 const StyledImgArea = styled.img`
   min-width: 1000px;
@@ -94,12 +95,17 @@ const Marker = styled.img`
 const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.95);
+
+  p {
+    text-align: center;
+    max-width: 35ch;
+  }
 
   h2 {
     font-size: 2rem;
@@ -118,6 +124,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const [pixelPosition, setPixelPosition] = useState({ x: 0, y: 0});
   const [itemState, setItemState] = useState({ sonic: false, tails: false, knuckles: false});
   const [markers, setMarkers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
 
   const { playSFX } = useContext(GlobalContext);
@@ -133,6 +140,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   }, [imageUrl]);
 
   const startGame = async () => {
+    setLoading(true);
     const response = await fetch(
       `http://localhost:3030/levels/${name}`,
       {
@@ -147,6 +155,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       const errorData = await response.json();
       console.error(`${errorData.message}`);
     }
+    setLoading(false);
   }
 
   const handleImageClick = (e) => {
@@ -231,29 +240,38 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
           <MusicPlayer ref={musicRef} source={musicPath} autoPlay={false}/>
       </div>
       <StyledMain>
-        {gameOver ? (
-          <GameOver levelName={name} />
-        ) : (
-            gameStarted ? (
-              <StyledImgContainer>
-              <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-              {markers.map((marker) => {
-                return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
-              })}
-              {displayHitBox.display === "flex" ? ( 
-              <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
-                <button onClick={() => handleSubmit('sonic')}>Sonic</button>
-                <button onClick={() => handleSubmit('tails')}>Tails</button>
-                <button onClick={() => handleSubmit('knuckles')}>Knuckles</button>
-              </HitBox>) : null}
-            </StyledImgContainer>
+          {loading ? (
+            <Loader />
+          ) : (
+            gameOver ? (
+              <GameOver levelName={name} />
             ) : (
-            <StyledModal>
-                <h2>Ready?</h2>
-                <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red"}}/>
-            </StyledModal>
-          )
-        )}
+                gameStarted ? (
+                  <StyledImgContainer>
+                  <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
+                  {markers.map((marker) => {
+                    return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
+                  })}
+                  {displayHitBox.display === "flex" ? ( 
+                  <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>
+                    <button onClick={() => handleSubmit('sonic')}>Sonic</button>
+                    <button onClick={() => handleSubmit('tails')}>Tails</button>
+                    <button onClick={() => handleSubmit('knuckles')}>Knuckles</button>
+                  </HitBox>) : null}
+                </StyledImgContainer>
+                ) : (
+                <StyledModal>
+                    <h2>Ready?</h2>
+                    <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red", fontSize: "22px"}}/>
+                    <h3>Instructions</h3>
+                    <p>Search through the busy image for Sonic, Tails and Knuckles</p>
+                    <p>When you think you've found them click the image on their location and select the right character name</p>
+                    <p>If the character name and their location is correct they'll be marked as found <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i></p>
+                    <p>Try to find them all in the shortest time possible</p>
+                </StyledModal>
+              )
+            )
+          )}
       </StyledMain>
       <Footer />
     </>

@@ -25,8 +25,10 @@ const GameScoreContainer = styled.div`
         justify-content: center;
         align-items: center;
         border: 3px ridge gold;
+        border-radius: 0px 0px 16px 0px;
         padding: 2px 18px;
         gap: 3px;
+        background: linear-gradient(rgba(202, 153, 67) 20%, white 80%);
     }
 
     li div div {
@@ -75,7 +77,7 @@ const GameScore = ({ itemState, gameOver }) => {
                         <img src="/src/assets/sonic-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
-                            <span>{itemState.sonic ? `✅` : `❌`}</span>
+                            <span>{itemState.sonic ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
                         </div>
                     </div>
                 </li>
@@ -85,7 +87,7 @@ const GameScore = ({ itemState, gameOver }) => {
                         <img src="/src/assets/tails-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
-                            <span>{itemState.tails ? `✅` : `❌`}</span>
+                            <span>{itemState.tails ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
                         </div>
                     </div>
                 </li>
@@ -95,7 +97,7 @@ const GameScore = ({ itemState, gameOver }) => {
                         <img src="/src/assets/knuckles-icon.png" alt="" />
                         <div>
                             <p>Found: </p>
-                            <span>{itemState.knuckles ? `✅` : `❌`}</span>
+                            <span>{itemState.knuckles ? <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i> : <i style={{color: "red"}} className="fa-solid fa-circle-xmark fa-lg"></i>}</span>
                         </div>
                     </div>
                 </li>
