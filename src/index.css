@@ -2,16 +2,16 @@
 
 @font-face {
   font-family: 'sage';
-  src: url('/src/assets/sage-webfont.woff2') format('woff2'),
-       url('/src/assets/sage-webfont.woff') format('woff');
+  src: url('/assets/sage-webfont.woff2') format('woff2'),
+       url('/assets/sage-webfont.woff') format('woff');
   font-weight: bold;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'andes';
-  src: url('/src/assets/andes-webfont.woff2') format('woff2'),
-       url('/src/assets/andes-webfont.woff') format('woff');
+  src: url('/assets/andes-webfont.woff2') format('woff2'),
+       url('/assets/andes-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -133,7 +133,7 @@
   position: sticky;
   top: 0px;
   z-index: 10;
-  background: url("/src/assets/checkered.png") center repeat; 
+  background: url("/assets/checkered.png") center repeat; 
   border-top: 6px ridge gold;
   border-bottom: 6px ridge gold;
 }

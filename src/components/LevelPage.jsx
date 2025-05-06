@@ -30,7 +30,7 @@ const StyledMain = styled.main`
     flex-direction: column;
     gap: 12px;
     flex: 1;
-    background: center / contain repeat-x url("/src/assets/background-title.gif");
+    background: center / contain repeat-x url("/assets/background-title.gif");
     justify-content: center;
     align-items: center;
 
@@ -250,7 +250,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                   <StyledImgContainer>
                   <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
                   {markers.map((marker) => {
-                    return <Marker src="/src/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
+                    return <Marker src="/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
                   })}
                   {displayHitBox.display === "flex" ? ( 
                   <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>

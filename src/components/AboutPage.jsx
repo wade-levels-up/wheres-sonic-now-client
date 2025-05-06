@@ -11,7 +11,7 @@ const StyledMain = styled.main`
     gap: 12px;
     flex: 1;
     padding: 24px 0px;
-    background: center / contain repeat-x url("/src/assets/background-title.gif");
+    background: center / contain repeat-x url("/assets/background-title.gif");
     justify-content: center;
     align-items: center;
     background-color: blue;
@@ -63,10 +63,10 @@ const AboutPage = () => {
                     <Button text="Home" href={"/"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/title-screen.mp3"}/>
+                <MusicPlayer source={"/assets/title-screen.mp3"}/>
             </div>
             <StyledMain>
-            <img src="/src/assets/tails-teh-one.gif" alt="Tails being silly" width={'100px'}/>
+            <img src="/assets/tails-teh-one.gif" alt="Tails being silly" width={'100px'}/>
                 <h2>Hi, I'm Wade!<br></br>And this is <span className="logo">Find Sonic Fast</span></h2>
                 <p>
                     A not-for-profit fan project web game inspired by the <a href="https://www.amazon.com.au/Wheres-Sonic-Now/dp/0721425429">'Where's Sonic Now'</a> book by Ladybird UK and the <a href="https://en.wikipedia.org/wiki/Sonic_%26_Knuckles">Sonic & Knuckles</a> game by Sega.  

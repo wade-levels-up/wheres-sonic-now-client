@@ -17,13 +17,13 @@ const CharacterList = () => {
     return (
         <StyledList>
             <li>
-                <StyledCharacterIcon src="/src/assets/sonic.png" alt="Sonic The Hedgehog" />
+                <StyledCharacterIcon src="/assets/sonic.png" alt="Sonic The Hedgehog" />
             </li>
             <li>
-                <StyledCharacterIcon src="/src/assets/tails.png" alt="Miles 'Tails' Prower" />
+                <StyledCharacterIcon src="/assets/tails.png" alt="Miles 'Tails' Prower" />
             </li>
             <li>
-                <StyledCharacterIcon src="/src/assets/knuckles.png" alt="Knuckles The Echidna" />
+                <StyledCharacterIcon src="/assets/knuckles.png" alt="Knuckles The Echidna" />
             </li>
         </StyledList>
     )

@@ -12,7 +12,7 @@ const StyledMain = styled.main`
     justify-content: center;
     align-items: center;
     flex: 1;
-    background: center / contain repeat-x url("/src/assets/background-title.gif");
+    background: center / contain repeat-x url("/assets/background-title.gif");
 
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
@@ -80,19 +80,19 @@ const LevelSelectPage = () => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/data-select.mp3"} autoPlay={'true'}/>
+                <MusicPlayer source={"/assets/data-select.mp3"} autoPlay={'true'}/>
             </div>
             <StyledMain>
                 {loading ? (
                     <Loader />
                 ) : (
                     <StyledGrid>
-                        <LevelCard highestScore={findHighestScore('angel-island-zone')} title={"Angel Island Zone"} href={"/angel-island-zone"} src={"/src/assets/thumb-angelisland.png"} alt={"Angel Island Zone"}/>
-                        <LevelCard highestScore={findHighestScore('hydro-city-zone')} title={"Hydro City Zone"} href={"/hydro-city-zone"} src={"/src/assets/thumb-hydrocity.png"} alt={"Hydro City Zone"}/>
-                        <LevelCard highestScore={findHighestScore('marble-garden-zone')} title={"Marble Garden Zone"} href={"/marble-garden-zone"} src={"/src/assets/thumb-marblegarden.png"} alt={"Marble Garden Zone"}/>
-                        <LevelCard highestScore={findHighestScore('carnival-night-zone')} title={"Carnival Night Zone"} href={"/carnival-night-zone"} src={"/src/assets/thumb-carnivalnight.png"} alt={"Carnival Night Zone"}/>
-                        <LevelCard highestScore={findHighestScore('ice-cap-zone')} title={"Ice Cap Zone"} href={"/ice-cap-zone"} src={"/src/assets/thumb-icecap.png"} alt={"Ice Cap Zone"}/>
-                        <LevelCard highestScore={findHighestScore('launch-base-zone')} title={"Launch Base Zone"} href={"/launch-base-zone"} src={"/src/assets/thumb-launchbase.png"} alt={"Launch Base Zone"}/>   
+                        <LevelCard highestScore={findHighestScore('angel-island-zone')} title={"Angel Island Zone"} href={"/angel-island-zone"} src={"/assets/thumb-angelisland.png"} alt={"Angel Island Zone"}/>
+                        <LevelCard highestScore={findHighestScore('hydro-city-zone')} title={"Hydro City Zone"} href={"/hydro-city-zone"} src={"/assets/thumb-hydrocity.png"} alt={"Hydro City Zone"}/>
+                        <LevelCard highestScore={findHighestScore('marble-garden-zone')} title={"Marble Garden Zone"} href={"/marble-garden-zone"} src={"/assets/thumb-marblegarden.png"} alt={"Marble Garden Zone"}/>
+                        <LevelCard highestScore={findHighestScore('carnival-night-zone')} title={"Carnival Night Zone"} href={"/carnival-night-zone"} src={"/assets/thumb-carnivalnight.png"} alt={"Carnival Night Zone"}/>
+                        <LevelCard highestScore={findHighestScore('ice-cap-zone')} title={"Ice Cap Zone"} href={"/ice-cap-zone"} src={"/assets/thumb-icecap.png"} alt={"Ice Cap Zone"}/>
+                        <LevelCard highestScore={findHighestScore('launch-base-zone')} title={"Launch Base Zone"} href={"/launch-base-zone"} src={"/assets/thumb-launchbase.png"} alt={"Launch Base Zone"}/>   
                     </StyledGrid> 
                 )}
             </StyledMain>

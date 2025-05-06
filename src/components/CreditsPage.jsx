@@ -11,7 +11,7 @@ const StyledMain = styled.main`
     gap: 24px;
     flex: 1;
     padding: 24px 0px;
-    background: center / contain repeat-x url("/src/assets/background-title.gif");
+    background: center / contain repeat-x url("/assets/background-title.gif");
     justify-content: center;
     align-items: center;
     background-color: blue;
@@ -60,10 +60,10 @@ const CreditsPage = () => {
                     <Button text="Home" href={"/"}/>
                     <Button text="About" href={"/about"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/title-screen.mp3"}/>
+                <MusicPlayer source={"/assets/title-screen.mp3"}/>
             </div>
             <StyledMain>
-            <img src="/src/assets/sonic-loading.gif" alt="Sonic twirling a ring around his finger" width={'70px'}/>
+            <img src="/assets/sonic-loading.gif" alt="Sonic twirling a ring around his finger" width={'70px'}/>
                 <h2 className="logo">Thanks to...</h2>
                 <ul>
                     <li>

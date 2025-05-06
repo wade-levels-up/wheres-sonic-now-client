@@ -19,7 +19,7 @@ const StyledLoader = styled.div`
 const Loader = () => {
     return (
         <StyledLoader>
-            <img src="/src/assets/sonic-loading.gif" alt="sonic spinning a ring around his finger whilst waiting" width={"80px"}/>
+            <img src="/assets/sonic-loading.gif" alt="sonic spinning a ring around his finger whilst waiting" width={"80px"}/>
             <span>Loading...</span>
         </StyledLoader>
     )

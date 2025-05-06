@@ -9,7 +9,7 @@ const StyledMain = styled.main`
     flex-direction: column;
     gap: 32px;
     flex: 1;
-    background: center / contain repeat-x url("/src/assets/background-title.gif");
+    background: center / contain repeat-x url("/assets/background-title.gif");
     justify-content: center;
     align-items: center;
     background-color: blue;
@@ -53,10 +53,10 @@ const HomePage = () => {
                     <Button text="About" href={"/about"}/>
                     <Button text="Credits" href={"/credits"}/>
                 </nav>
-                <MusicPlayer source={"/src/assets/title-screen.mp3"} autoPlay={'true'}/>
+                <MusicPlayer source={"/assets/title-screen.mp3"} autoPlay={'true'}/>
             </div>
             <StyledMain>
-                <StyledAnimation src="/src/assets/plane.gif" alt="Sonic and Tails in plane"/>
+                <StyledAnimation src="/assets/plane.gif" alt="Sonic and Tails in plane"/>
                 <h2 style={{animation: "2s ease 1 fly-in"}}>Welcome to Find Sonic Fast!</h2>
                 <h3 style={{animation: "3s ease 1 fly-in"}}>How fast can you find Sonic and the team?</h3>
             </StyledMain>
