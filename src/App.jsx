@@ -25,27 +25,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/angel-island-zone",
-    element: <LevelPage name={"angel-island-zone"} musicPath={"/assets/angelislandzone.mp3"} imageUrl={"src/assets/angel-island-zone.webp"}/>
+    element: <LevelPage name={"angel-island-zone"} musicPath={"/assets/angelislandzone.mp3"} imageUrl={"/assets/angel-island-zone.webp"}/>
   },
   {
     path: "/hydro-city-zone",
-    element: <LevelPage name={"hydro-city-zone"} musicPath={"/assets/hydrocityzone.mp3"} imageUrl={"src/assets/hydro-city-zone.webp"}/>
+    element: <LevelPage name={"hydro-city-zone"} musicPath={"/assets/hydrocityzone.mp3"} imageUrl={"/assets/hydro-city-zone.webp"}/>
   },
   {
     path: "/marble-garden-zone",
-    element: <LevelPage name={"marble-garden-zone"} musicPath={"/assets/marblegardenzone.mp3"} imageUrl={"src/assets/marble-garden-zone.webp"}/>
+    element: <LevelPage name={"marble-garden-zone"} musicPath={"/assets/marblegardenzone.mp3"} imageUrl={"/assets/marble-garden-zone.webp"}/>
   },
   {
     path: "/carnival-night-zone",
-    element: <LevelPage name={"carnival-night-zone"} musicPath={"/assets/carnivalnightzone.mp3"} imageUrl={"src/assets/carnival-night-zone.webp"}/>
+    element: <LevelPage name={"carnival-night-zone"} musicPath={"/assets/carnivalnightzone.mp3"} imageUrl={"/assets/carnival-night-zone.webp"}/>
   },
   {
     path: "/ice-cap-zone",
-    element: <LevelPage name={"ice-cap-zone"} musicPath={"/assets/icecapzone.mp3"} imageUrl={"src/assets/ice-cap-zone.webp"}/>
+    element: <LevelPage name={"ice-cap-zone"} musicPath={"/assets/icecapzone.mp3"} imageUrl={"/assets/ice-cap-zone.webp"}/>
   },
   {
     path: "/launch-base-zone",
-    element: <LevelPage name={"launch-base-zone"} musicPath={"/assets/launchbasezone.mp3"} imageUrl={"src/assets/launch-base-zone.webp"}/>
+    element: <LevelPage name={"launch-base-zone"} musicPath={"/assets/launchbasezone.mp3"} imageUrl={"/assets/launch-base-zone.webp"}/>
   },
 ])
 
