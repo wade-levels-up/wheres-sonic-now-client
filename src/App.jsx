@@ -4,6 +4,7 @@ import LevelSelectPage from "./components/LevelSelectPage";
 import HomePage from "./components/HomePage";
 import LevelPage from "./components/LevelPage";
 import AboutPage from "./components/AboutPage";
+import CreditsPage from "./components/CreditsPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <AboutPage />,
+  },
+  {
+    path: "/credits",
+    element: <CreditsPage />,
   },
   {
     path: "/angel-island-zone",

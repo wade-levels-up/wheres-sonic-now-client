@@ -16,6 +16,7 @@ const StyledButton = styled.button`
     border-radius: 30px;
     box-shadow: 1px 2px 2px white inset;
     cursor: pointer;
+    outline: 1px solid aliceblue;
 
     &:hover {
         box-shadow: 3px 6px 3px black inset;

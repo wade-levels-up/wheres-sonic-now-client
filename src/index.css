@@ -61,8 +61,13 @@
   0% {
     filter: drop-shadow(0px 0px 30px red);
   }
-  50% {
+  40% {
     filter: drop-shadow(0px 0px 60px red);
+    outline: 6px solid red;
+  }
+  60% {
+    filter: drop-shadow(0px 0px 80px red);
+    outline: 6px solid red;
   }
   100% {
     filter: drop-shadow(0px 0px 30px red);
@@ -113,7 +118,7 @@
   font-family: sage;
   background-color: aliceblue;
   color: blue;
-  padding: 0px 6px;
+  padding: 0px 10px;
   display: block;
 }
 
@@ -150,6 +155,7 @@ nav {
 main {
   border-bottom: 6px ridge gold;
 }
+
 
 @media (min-width: 1500px) {
   .gameboard {

@@ -22,13 +22,15 @@ const StyledMain = styled.main`
 
     p {
         font-size: 16px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 255, 0.8);
         padding: 9px;
         border-radius: 9px;
         max-width: 600px;
         text-wrap: balance;
         text-align: center;
         margin: 6px;
+        border-radius: 12px;
+        border: 6px ridge gold;
     }
 
     a {
@@ -67,24 +69,15 @@ const AboutPage = () => {
             <img src="/src/assets/tails-teh-one.gif" alt="Tails being silly" width={'100px'}/>
                 <h2>Hi, I'm Wade!<br></br>And this is <span className="logo">Find Sonic Fast</span></h2>
                 <p>
-                    A fan project web game inspired by the <a href="https://www.amazon.com.au/Wheres-Sonic-Now/dp/0721425429">'Where's Sonic Now'</a> book by Ladybird UK.<br></br> I'm also a huge fan of the <a href="https://en.wikipedia.org/wiki/Sonic_%26_Knuckles">Sonic & Knuckles</a> game by Sega.  
-                </p>
-                <p>
-                The game is not run for profit.<br></br> Images, artwork, music and sound effects have been accessed through <a href="https://archive.org/details/sonic3_knuckles_ost/48-Act+2+Boss+Theme.mp3">Internet Archive</a> as well as <a href="https://info.sonicretro.org/Where%27s_Sonic_Now%3F">Sonic Retro</a>.
-                </p>
-                <p>
+                    A not-for-profit fan project web game inspired by the <a href="https://www.amazon.com.au/Wheres-Sonic-Now/dp/0721425429">'Where's Sonic Now'</a> book by Ladybird UK and the <a href="https://en.wikipedia.org/wiki/Sonic_%26_Knuckles">Sonic & Knuckles</a> game by Sega.  
+                    <br></br><br></br>
                     As a budding web developer I challenged myself to create a 'Where's Wally' style game with a timer and leaderboard.<br></br><br></br>
                     After some time thinking over the idea I recalled the 'Where's Sonic Now' and 'Where's Sonic' books from my childhood which the game levels are based upon.<br></br><br></br>
                     Being a Sonic game, having a timer to make things competitive like a race felt like it made sense!
-                </p>
-                <p>
-                    Growing up with the original Sega Sonic games, this project was absolutely an excuse for a trip down nostalgia lane.
-                </p>
-                <p>
-                    I hope you have as much fun playing through the levels as I did piecing this together! ✌🏻
-                </p>
-                <p>
-                    You can find me on <a href="https://www.instagram.com/wade.levels.up/">Instagram</a>, <a href="https://github.com/wade-levels-up">Github</a> or via my personal page <a href="https://wadelevelsup.com/">wade.levels.up.com</a>
+                    This project was absolutely an excuse for a trip down nostalgia lane.
+                    <br></br><br></br>
+                    I hope you have as much fun playing through the levels as I did piecing this together!
+                    You can find me on <a href="https://www.instagram.com/wade.levels.up/">Instagram</a>, <a href="https://github.com/wade-levels-up">Github</a> or via my personal page <a href="https://wadelevelsup.com/">wade.levels.up.com</a> ✌🏻
                 </p>
             </StyledMain>
             <Footer />

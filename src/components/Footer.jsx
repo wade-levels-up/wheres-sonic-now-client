@@ -10,13 +10,14 @@ const StyledFooter = styled.footer`
     letter-spacing: 1px;
     color: blue;
     font-family: monospace;
+
 `
 
 const Footer = () => {
     return (
         <StyledFooter>
             <span>16-BIT</span>
-            <span>Made By Wade</span>
+            <a href="https://wadelevelsup.com/"><i className="fa-solid fa-bolt"></i> Made By Wade</a>
         </StyledFooter>
     )
 }
