@@ -35,7 +35,7 @@ const LevelSelectPage = () => {
 
     const getAllLevelScores = async () => {
         const response = await fetch(
-          `http://${process.env.API}/scores/all`,
+          `http://${import.meta.env.API}/scores/all`,
           {
             method: "GET",
             credentials: "include", 
