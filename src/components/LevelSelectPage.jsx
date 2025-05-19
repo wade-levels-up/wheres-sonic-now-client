@@ -35,7 +35,7 @@ const LevelSelectPage = () => {
 
     const getAllLevelScores = async () => {
         const response = await fetch(
-          `https://${import.meta.env.VITE_API}/scores/all`,
+          `http://${import.meta.env.VITE_API}/scores/all`,
           {
             method: "GET",
             credentials: "include", 
