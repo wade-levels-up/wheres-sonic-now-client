@@ -120,7 +120,7 @@ const GameOver = ({ levelName }) => {
 
     const getUserScore = async () => {
         const response = await fetch(
-          `http://localhost:3030/scores`,
+          `https://${import.meta.env.VITE_API}/scores`,
           {
             method: "GET",
             credentials: "include", 
@@ -138,7 +138,7 @@ const GameOver = ({ levelName }) => {
 
     const getAllLevelScores = async () => {
         const response = await fetch(
-          `http://localhost:3030/scores/all`,
+          `https://${import.meta.env.VITE_API}/scores/all`,
           {
             method: "GET",
             credentials: "include", 
@@ -158,7 +158,7 @@ const GameOver = ({ levelName }) => {
         e.preventDefault();
     
         const response = await fetch(
-          `http://localhost:3030/scores`,
+          `https://${import.meta.env.VITE_API}/scores`,
           {
             method: "POST",
             credentials: "include",
