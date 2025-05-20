@@ -142,7 +142,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
   const startGame = async () => {
     setLoading(true);
     const response = await fetch(
-      `http://${import.meta.env.VITE_API}/levels/${name}`,
+      `${import.meta.env.VITE_API}/levels/${name}`,
       {
         method: "GET",
         headers: {
@@ -188,7 +188,7 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
     setDisplayHitBox({display: "none"});
 
     const response = await fetch(
-      `http://${import.meta.env.VITE_API}/levels`,
+      `${import.meta.env.VITE_API}/levels`,
       {
         method: "POST",
         // credentials: "include", // Include cookies in the req
