@@ -145,11 +145,16 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       `http://${import.meta.env.VITE_API}/levels/${name}`,
       {
         method: "GET",
-        credentials: "include", // Include cookies in the req
+        headers: {
+          "Authorization": `Bearer ${sessionStorage.getItem("token")}`
+        },
+        // credentials: "include", // Include cookies in the req
       }
     )
 
     if (response.ok) {
+      const data = await response.json()
+      sessionStorage.setItem("token", data.token);
       setGameStarted(true)
     } else {
       const errorData = await response.json();
@@ -186,8 +191,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       `http://${import.meta.env.VITE_API}/levels`,
       {
         method: "POST",
-        credentials: "include", // Include cookies in the req
+        // credentials: "include", // Include cookies in the req
         headers: {
+          "Authorization": `Bearer ${sessionStorage.getItem("token")}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ name: item.toLowerCase(), levelId: name, x: pixelPosition.x, y: pixelPosition.y }),
@@ -249,8 +255,8 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                 gameStarted ? (
                   <StyledImgContainer>
                   <StyledImgArea src={imageUrl} alt="" onClick={handleImageClick} />
-                  {markers.map((marker) => {
-                    return <Marker src="/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
+                  {markers.map((marker, index) => {
+                    return <Marker key={index} src="/assets/starpost.gif" style={{ '--display': marker.display, '--x': marker.x + "px", '--y': marker.y + "px"}}/>
                   })}
                   {displayHitBox.display === "flex" ? ( 
                   <HitBox style={{ '--display': displayHitBox.display, '--x': clickPosition.x + "px", '--y': clickPosition.y + "px"}}>

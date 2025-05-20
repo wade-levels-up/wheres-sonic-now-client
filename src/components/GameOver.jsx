@@ -123,7 +123,9 @@ const GameOver = ({ levelName }) => {
           `http://${import.meta.env.VITE_API}/scores`,
           {
             method: "GET",
-            credentials: "include", 
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("token")}`
+              }, 
           }
         )
     
@@ -141,7 +143,6 @@ const GameOver = ({ levelName }) => {
           `http://${import.meta.env.VITE_API}/scores/all`,
           {
             method: "GET",
-            credentials: "include", 
           }
         )
     
@@ -161,10 +162,10 @@ const GameOver = ({ levelName }) => {
           `http://${import.meta.env.VITE_API}/scores`,
           {
             method: "POST",
-            credentials: "include",
             headers: {
-              "Content-type": "application/json",
-            },
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("token")}`
+              },
             body: JSON.stringify({ name }),
           }
         )
@@ -173,7 +174,8 @@ const GameOver = ({ levelName }) => {
             getAllLevelScores();
             setScoreSubmitted(true);
             playSFX("Chaching");
-            setError("")
+            setError("");
+            sessionStorage.clear();
         } else {
             const errorData = await response.json();
             setError(`${errorData.message}`)
@@ -208,18 +210,18 @@ const GameOver = ({ levelName }) => {
                                 }
 
                                 return 0
-                            }).map((score) => {
+                            }).map((score, index) => {
                                 if (score.levelId === levelName && score.name) {
                                     if (score.name === name) {
                                         return (
-                                            <tr style={{ border: "1px solid gold", backgroundColor: "red", color: "black"}}>
+                                            <tr key={index} style={{ border: "1px solid gold", backgroundColor: "red", color: "black"}}>
                                                 <th scope="row">{score.name}</th>
                                                 <td>{score.time}s</td>
                                             </tr>    
                                         )
                                     } else {
                                         return (
-                                            <tr>
+                                            <tr key={index}>
                                                 <th scope="row">{score.name}</th>
                                                 <td>{score.time}s</td>
                                             </tr>
