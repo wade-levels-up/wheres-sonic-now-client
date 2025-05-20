@@ -10,6 +10,8 @@ const StyledLoader = styled.div`
     padding: 12px 24px;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.2);
+    animation: 750ms ease 1 spin-x;
+    will-change: transform;
 
     span {
         font-size: 1.5rem;

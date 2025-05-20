@@ -18,6 +18,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
+    animation: 1s ease 1 fade-in;
+
     p, h2, h3 {
         font-size: 2rem;
         font-weight: 900;

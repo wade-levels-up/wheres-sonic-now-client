@@ -16,6 +16,15 @@
   font-style: normal;
 }
 
+@keyframes move-in {
+  from {
+    transform: translateX(200vw);
+  }
+  to {
+    transform: translateX(0vw);
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -71,6 +80,32 @@
   }
   100% {
     filter: drop-shadow(0px 0px 30px red);
+  }
+}
+
+@keyframes pulse-red-timer {
+  0% {
+    outline: 1px solid red;
+  }
+  40% {
+    outline: 5px solid red;
+  }
+  60% {
+    outline: 5px solid red;
+  }
+  100% {
+    outline: 1px solid red;
+  }
+}
+
+
+@keyframes spin-x {
+  from {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 0, 0deg);
   }
 }
 

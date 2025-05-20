@@ -38,6 +38,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     background-color: blue;
+
+    animation: 1s ease 1 fade-in;
 `
 
 const HitBox = styled.div`
@@ -62,23 +64,27 @@ const HitBox = styled.div`
       position: absolute;
       padding: 3px 3px;
       cursor: pointer;
+      will-change: transform;
     }
 
     button:nth-child(1) {
       bottom: -36px;
       left: -6px;
       background-color: blue;
+      animation: 600ms ease 1 spin-x;
     }
 
     button:nth-child(2) {
       left: -6px;
       bottom: -68px;
       background-color: orange;
+      animation: 750ms ease 1 spin-x;
     }
 
     button:nth-child(3) {
       left: -6px;
       bottom: -102px;
+      animation: 900ms ease 1 spin-x;
     }
 `
 
@@ -148,7 +154,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
         headers: {
           "Authorization": `Bearer ${sessionStorage.getItem("token")}`
         },
-        // credentials: "include", // Include cookies in the req
       }
     )
 
@@ -191,7 +196,6 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
       `${import.meta.env.VITE_API}/levels`,
       {
         method: "POST",
-        // credentials: "include", // Include cookies in the req
         headers: {
           "Authorization": `Bearer ${sessionStorage.getItem("token")}`,
           "Content-type": "application/json",
@@ -270,9 +274,9 @@ const LevelPage = ({ name, imageUrl, musicPath }) => {
                     <h2>Ready?</h2>
                     <Button text="Start" func={startGame} style={{animation: "1s linear infinite pulse-red", fontSize: "22px"}}/>
                     <h3>Instructions</h3>
-                    <p>Search through the busy image for Sonic, Tails and Knuckles</p>
-                    <p>When you think you've found them click the image on their location and select the right character name</p>
-                    <p>If the character name and their location is correct they'll be marked as found <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i></p>
+                    <p>Search image for Sonic, Tails and Knuckles</p>
+                    <p>Click their image and select the right character name</p>
+                    <p>If the character name and location is correct they'll be marked as found <i style={{color: "green"}} className="fa-solid fa-circle-check fa-lg"></i></p>
                     <p>Try to find them all in the shortest time possible</p>
                 </StyledModal>
               )

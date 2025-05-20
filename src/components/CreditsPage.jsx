@@ -20,6 +20,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
+    animation: 1s ease 1 fade-in;
+
     a {
         color: gold;
     }

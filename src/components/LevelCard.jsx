@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const StyledLevelCard = styled.div`
     display: flex;
+    min-height: 300px;
+    width: 100%;
     flex-direction: column;
     max-width: 336px;
     height: fit-content;
@@ -20,6 +22,8 @@ const StyledLevelCard = styled.div`
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+
+    animation: 600ms ease 1 fade-in;
     
     &:hover {
         outline: 6px solid red;

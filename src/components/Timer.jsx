@@ -14,7 +14,9 @@ const StyledDiv = styled.div`
     cursor: pointer;
     flex: 1;
     font-size: 16px;
-    background: linear-gradient(rgba(202, 153, 67) 20%, white 80%);
+    background-color: aliceblue;
+
+    animation: 1s linear infinite pulse-red-timer;
 
 
     @media (max-width: 600px) {

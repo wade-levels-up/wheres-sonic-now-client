@@ -20,6 +20,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
+    animation: 1s ease 1 fade-in;
+
     p {
         font-size: 16px;
         background-color: rgba(0, 0, 255, 0.8);

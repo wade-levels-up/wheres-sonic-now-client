@@ -18,6 +18,8 @@ const StyledMain = styled.main`
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     background-color: blue;
+
+    animation: 1s ease 1 fade-in;
 `
 const StyledGrid = styled.div`
     display: grid;
@@ -27,6 +29,7 @@ const StyledGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-template-rows: 350px;
     gap: 16px;
+    justify-items: center;
 `
 
 const LevelSelectPage = () => {
