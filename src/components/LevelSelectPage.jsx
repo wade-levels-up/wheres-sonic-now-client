@@ -38,7 +38,6 @@ const LevelSelectPage = () => {
           `${import.meta.env.VITE_API}/scores/all`,
           {
             method: "GET",
-            credentials: "include", 
           }
         )
     
