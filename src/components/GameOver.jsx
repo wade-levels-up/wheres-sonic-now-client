@@ -248,8 +248,9 @@ const GameOver = ({ levelName }) => {
                                 <li>
                                     <button type="submit">Save</button>
                                 </li>
-                                {error ? (<li>
-                                    <p className="errorMsg">{error}</p>
+                                {error ? (<li className="errorMsg">
+                                    <img src="../assets/eggman.png" alt="eggman" width={'70px'}/>
+                                    <p>{error}</p>
                                 </li>) : null}
                             </ul>
                         </StyledForm>

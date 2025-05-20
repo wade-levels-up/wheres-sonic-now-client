@@ -54,7 +54,7 @@ const LevelCard = ({ title, href, src, alt, highestScore }) => {
         <StyledLevelCard onClick={handleSelect} onMouseEnter={() => playSFX("Option Select")}>
             <img src={src} alt={alt} />
             <StyledH2>{title}</StyledH2>
-            <span style={{width: "100%", textAlign: "left", padding: "6px", backgroundColor: "brown"}}>Best time: {highestScore && highestScore.name && highestScore.time ? `${highestScore.name} ${highestScore.time}` : "No times set"}</span>
+            <span style={{width: "100%", textAlign: "left", padding: "6px", backgroundColor: "brown"}}>⏰ Best time: {highestScore && highestScore.name && highestScore.time ? `${highestScore.name} - ${highestScore.time}s` : "No times set"}</span>
         </StyledLevelCard>
     )
 }
